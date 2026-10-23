@@ -1,0 +1,66 @@
+---
+import Logo from './Logo.astro';
+import { navigation, site } from '../data/site';
+import { products } from '../data/products';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="shell footer-main">
+    <div class="footer-brand">
+      <a href="/" aria-label="Bake Code home"><Logo inverted /></a>
+      <p>Engineering software.<br />Building products.</p>
+    </div>
+    <div class="footer-nav">
+      <div>
+        <p class="footer-label">Navigate</p>
+        {navigation.map((item) => <a href={item.href}>{item.label}</a>)}
+        <a href="/privacy">Privacy</a>
+      </div>
+      <div>
+        <p class="footer-label">Products</p>
+        {products.map((product) => product.url ? <a href={product.url} target="_blank" rel="noreferrer">{product.name}</a> : <span>{product.name}</span>)}
+      </div>
+      <div>
+        <p class="footer-label">Based</p>
+        <span>{site.location}</span>
+        {site.contactEmail ? <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a> : <a href="/contact">Start a conversation</a>}
+      </div>
+    </div>
+  </div>
+  <div class="shell legal-row">
+    <p>© {year} {site.name}</p>
+    <p>
+      Company no. {site.companyNumber ?? '[TO BE CONFIRMED]'} · Registered office: {site.registeredOffice ?? '[TO BE CONFIRMED]'}
+    </p>
+    <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+  </div>
+</footer>
+
+<style>
+  .footer { padding-top: clamp(4rem, 9vw, 8rem); background: var(--ink); color: var(--cream); }
+  .footer-main { display: grid; grid-template-columns: minmax(15rem, 1fr) 2fr; gap: clamp(4rem, 8vw, 9rem); padding-bottom: clamp(4rem, 7vw, 7rem); }
+  .footer-brand p { margin-top: 2rem; color: var(--stone-light); font-family: var(--font-display); font-size: clamp(1.5rem, 2.8vw, 2.5rem); font-weight: 500; letter-spacing: -0.045em; line-height: 1.06; }
+  .footer-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .footer-nav > div { display: flex; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .footer-label { margin-bottom: 0.6rem; color: var(--orange); font-size: 0.66rem; font-weight: 750; letter-spacing: 0.13em; text-transform: uppercase; }
+  .footer-nav a, .footer-nav span { color: var(--cream); font-size: 0.88rem; }
+  .footer-nav a { text-decoration-color: transparent; text-underline-offset: 0.3em; transition: color 150ms ease, text-decoration-color 150ms ease; }
+  .footer-nav a:hover { color: var(--orange); text-decoration: underline; text-decoration-color: currentColor; }
+  .legal-row { display: grid; grid-template-columns: auto 1fr auto; gap: 2rem; align-items: center; min-height: 5.25rem; border-top: 1px solid rgb(247 245 240 / 0.14); color: var(--stone-light); font-size: 0.68rem; line-height: 1.5; }
+  .legal-row p:nth-child(2) { text-align: center; }
+  .legal-row a { color: var(--cream); white-space: nowrap; }
+  .legal-row a span { margin-left: 0.35rem; color: var(--orange); }
+
+  @media (max-width: 800px) {
+    .footer-main { grid-template-columns: 1fr; }
+    .legal-row { grid-template-columns: 1fr; gap: 0.65rem; align-items: start; padding-block: 1.5rem; }
+    .legal-row p:nth-child(2) { text-align: left; }
+  }
+
+  @media (max-width: 520px) {
+    .footer-nav { grid-template-columns: 1fr 1fr; }
+    .footer-nav > div:last-child { grid-column: 1 / -1; margin-top: 1rem; }
+  }
+</style>

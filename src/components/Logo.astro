@@ -1,0 +1,51 @@
+---
+interface Props {
+  compact?: boolean;
+  inverted?: boolean;
+}
+
+const { compact = false, inverted = false } = Astro.props;
+---
+
+<span class:list={['brand', { compact, inverted }]}>
+  <svg viewBox="0 0 42 32" aria-hidden="true">
+    <path class="brackets" d="M13 4 3 16l10 12M29 4l10 12-10 12" />
+    <rect class="core" x="17" y="11" width="8" height="10" rx="2" />
+  </svg>
+  <span class="wordmark">Bake Code</span>
+</span>
+
+<style>
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.72rem;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 680;
+    letter-spacing: -0.035em;
+  }
+
+  svg {
+    width: 2rem;
+    height: auto;
+    overflow: visible;
+  }
+
+  .brackets {
+    fill: none;
+    stroke: var(--orange);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .core { fill: currentColor; }
+  .inverted { color: var(--cream); }
+  .compact .wordmark { display: none; }
+
+  @media (max-width: 420px) {
+    .wordmark { font-size: 1rem; }
+  }
+</style>

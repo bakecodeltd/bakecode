@@ -1,0 +1,131 @@
+---
+import type { ProductTheme } from '../data/products';
+
+interface Props {
+  theme: ProductTheme;
+  compact?: boolean;
+}
+
+const { theme, compact = false } = Astro.props;
+---
+
+<div class:list={['artwork', `artwork--${theme}`, { compact }]} aria-hidden="true">
+  {
+    theme === 'links' && (
+      <>
+        <div class="links-top"><span>KeepMyLinks</span><i></i><i></i></div>
+        <div class="links-sidebar"><b></b><b></b><b></b><b></b></div>
+        <div class="links-board">
+          <div class="bookmark bookmark-a"><span>FIELD NOTES</span><strong>Product systems<br />worth saving.</strong><i>↗</i></div>
+          <div class="bookmark bookmark-b"><span>DESIGN</span><strong>Good interfaces,<br />well observed.</strong><i>12</i></div>
+          <div class="bookmark bookmark-c"><span>TOOLS</span><strong>Build a better<br />working set.</strong><i>+</i></div>
+        </div>
+        <div class="links-tag"># collected, not lost</div>
+      </>
+    )
+  }
+  {
+    theme === 'racer' && (
+      <>
+        <div class="racer-grid"></div>
+        <div class="racer-score"><span>LAP 04</span><strong>08<span>.7</span></strong></div>
+        <div class="racer-equation"><span>12</span><i>×</i><span>8</span><i>=</i><b>?</b></div>
+        <div class="racer-track track-a"></div>
+        <div class="racer-track track-b"></div>
+        <div class="racer-car"><i></i><i></i><span>96</span></div>
+        <div class="racer-copy">THINK FAST<br />DRIVE SMART</div>
+      </>
+    )
+  }
+  {
+    theme === 'games' && (
+      <>
+        <div class="game-sun"></div>
+        <div class="game-grid"></div>
+        <div class="game-title"><span>HARVEY</span><strong>GAMES</strong></div>
+        <div class="game-piece piece-a">◆</div>
+        <div class="game-piece piece-b">●</div>
+        <div class="game-piece piece-c">✦</div>
+        <div class="game-path"></div>
+        <div class="game-label">PRESS PLAY / FIND OUT</div>
+      </>
+    )
+  }
+</div>
+
+<style>
+  .artwork { position: relative; min-height: clamp(24rem, 46vw, 42rem); overflow: hidden; isolation: isolate; }
+  .compact { min-height: clamp(20rem, 34vw, 31rem); }
+
+  /* KeepMyLinks — collected fragments arranged into a working board */
+  .artwork--links { background: #d7e0cf; color: #1c332b; }
+  .links-top { position: absolute; z-index: 3; top: 5%; right: 5%; left: 5%; display: flex; align-items: center; gap: 0.5rem; height: 9%; padding-inline: 1.1rem; border: 1px solid rgb(28 51 43 / 0.25); border-radius: 0.55rem; background: rgb(247 245 240 / 0.78); font-size: 0.66rem; font-weight: 750; letter-spacing: 0.03em; box-shadow: 0 1rem 2rem rgb(28 51 43 / 0.08); }
+  .links-top span { margin-right: auto; font-family: var(--font-display); font-size: 0.8rem; }
+  .links-top i { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: #e8754c; }
+  .links-top i:last-child { background: #1c332b; }
+  .links-sidebar { position: absolute; z-index: 2; top: 18%; bottom: 8%; left: 5%; width: 10%; padding: 1rem 0; border: 1px solid rgb(28 51 43 / 0.18); border-radius: 0.5rem; background: rgb(247 245 240 / 0.38); }
+  .links-sidebar b { display: block; width: 42%; aspect-ratio: 1; margin: 0 auto 1.3rem; border-radius: 0.2rem; background: rgb(28 51 43 / 0.18); }
+  .links-sidebar b:first-child { background: #1c332b; }
+  .links-board { position: absolute; top: 18%; right: 5%; bottom: 8%; left: 18%; }
+  .bookmark { position: absolute; display: flex; flex-direction: column; padding: clamp(1rem, 2.4vw, 2rem); border: 1px solid rgb(28 51 43 / 0.25); border-radius: 0.55rem; box-shadow: 0 1.4rem 3rem rgb(28 51 43 / 0.13); transition: transform 500ms var(--ease); }
+  .artwork--links:hover .bookmark-a { transform: translate(-0.4rem, -0.4rem) rotate(-1deg); }
+  .artwork--links:hover .bookmark-b { transform: translate(0.35rem, -0.25rem) rotate(1deg); }
+  .artwork--links:hover .bookmark-c { transform: translateY(0.4rem); }
+  .bookmark span { font-size: clamp(0.45rem, 0.8vw, 0.68rem); font-weight: 750; letter-spacing: 0.12em; }
+  .bookmark strong { margin-top: auto; font-family: var(--font-display); font-size: clamp(1.1rem, 2.2vw, 2rem); font-weight: 570; letter-spacing: -0.045em; line-height: 1.05; }
+  .bookmark i { position: absolute; right: 1rem; bottom: 1rem; font-style: normal; font-size: 0.7rem; }
+  .bookmark-a { top: 0; bottom: 31%; left: 0; width: 57%; background: #f7f5f0; transform: rotate(-0.5deg); }
+  .bookmark-b { top: 0; right: 0; bottom: 31%; width: 40%; background: #e8754c; color: #1b2521; transform: rotate(0.6deg); }
+  .bookmark-c { right: 0; bottom: 0; left: 0; height: 27%; background: #1c332b; color: #f7f5f0; }
+  .links-tag { position: absolute; z-index: 4; right: 8%; bottom: 4.5%; padding: 0.5rem 0.8rem; border-radius: 10rem; background: #f5cc52; font-size: clamp(0.5rem, 0.8vw, 0.67rem); font-weight: 750; transform: rotate(-3deg); }
+
+  /* Maths Racer — a deliberately typographic arcade dashboard */
+  .artwork--racer { background: #182449; color: #f4f0e6; }
+  .racer-grid { position: absolute; inset: 0; background-image: linear-gradient(rgb(255 255 255 / 0.08) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255 / 0.08) 1px, transparent 1px); background-size: 8% 12%; mask-image: linear-gradient(to bottom, transparent, #000 25%); transform: perspective(450px) rotateX(58deg) scale(1.4) translateY(30%); transform-origin: bottom; }
+  .racer-score { position: absolute; z-index: 2; top: 7%; left: 6%; }
+  .racer-score > span { display: block; color: #ff785d; font-size: clamp(0.55rem, 0.8vw, 0.7rem); font-weight: 800; letter-spacing: 0.14em; }
+  .racer-score strong { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 7.5rem); font-weight: 550; letter-spacing: -0.08em; line-height: 0.8; }
+  .racer-score strong span { color: #78f1c4; }
+  .racer-equation { position: absolute; z-index: 3; top: 36%; right: 6%; left: 9%; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-display); font-size: clamp(2rem, 5vw, 5rem); font-weight: 620; letter-spacing: -0.05em; }
+  .racer-equation i { color: #ff785d; font-style: normal; font-size: 0.55em; }
+  .racer-equation b { display: grid; width: 1.2em; aspect-ratio: 1; place-items: center; border: 2px solid #78f1c4; border-radius: 50%; color: #78f1c4; font-weight: 500; }
+  .racer-track { position: absolute; z-index: 1; right: -10%; left: -10%; height: 2px; background: #f4f0e6; transform: rotate(-12deg); }
+  .track-a { bottom: 24%; }
+  .track-b { bottom: 14%; opacity: 0.32; }
+  .racer-car { position: absolute; z-index: 4; right: 19%; bottom: 10%; display: flex; width: clamp(5rem, 13vw, 11rem); height: clamp(2.4rem, 5.5vw, 5rem); align-items: center; justify-content: center; border-radius: 45% 55% 18% 20%; background: #ff785d; color: #182449; font-family: var(--font-display); font-size: clamp(1rem, 2.5vw, 2.2rem); font-weight: 750; transform: rotate(-12deg); transition: transform 600ms var(--ease); }
+  .artwork--racer:hover .racer-car { transform: translateX(1.25rem) rotate(-12deg); }
+  .racer-car::before { position: absolute; top: -34%; right: 18%; width: 47%; height: 50%; border-radius: 60% 50% 0 0; background: #78f1c4; content: ''; }
+  .racer-car i { position: absolute; bottom: -22%; width: 19%; aspect-ratio: 1; border: 0.2rem solid #f4f0e6; border-radius: 50%; background: #182449; }
+  .racer-car i:first-child { left: 14%; }
+  .racer-car i:nth-child(2) { right: 14%; }
+  .racer-copy { position: absolute; bottom: 5%; left: 5%; color: rgb(244 240 230 / 0.62); font-size: clamp(0.5rem, 0.9vw, 0.72rem); font-weight: 800; letter-spacing: 0.13em; line-height: 1.5; }
+
+  /* Harvey Games — playful tokens crossing a modular world */
+  .artwork--games { background: #e9cfef; color: #24152d; }
+  .game-sun { position: absolute; top: -10%; right: -6%; width: 44%; aspect-ratio: 1; border-radius: 50%; background: #ff704d; }
+  .game-grid { position: absolute; inset: 0; background-image: radial-gradient(#24152d 1px, transparent 1px); background-size: 1.8rem 1.8rem; opacity: 0.12; }
+  .game-title { position: absolute; z-index: 3; top: 9%; left: 6%; display: flex; flex-direction: column; font-family: var(--font-display); font-size: clamp(2.5rem, 7.5vw, 7rem); font-weight: 650; letter-spacing: -0.08em; line-height: 0.7; }
+  .game-title strong { margin-left: 0.7em; color: #6957e8; font-weight: inherit; }
+  .game-piece { position: absolute; z-index: 4; display: grid; place-items: center; border: 2px solid #24152d; box-shadow: 0.55rem 0.55rem 0 #24152d; transition: transform 450ms var(--ease); }
+  .piece-a { top: 46%; left: 14%; width: clamp(4.5rem, 10vw, 8.5rem); aspect-ratio: 1; background: #f4ea58; font-size: clamp(1.5rem, 3vw, 3rem); transform: rotate(-8deg); }
+  .piece-b { top: 39%; right: 13%; width: clamp(4rem, 9vw, 7rem); aspect-ratio: 1; border-radius: 50%; background: #83d6b9; font-size: clamp(1.2rem, 2.5vw, 2.4rem); }
+  .piece-c { right: 37%; bottom: 10%; width: clamp(4.5rem, 10vw, 8rem); aspect-ratio: 1; border-radius: 50% 50% 15% 50%; background: #ff704d; font-size: clamp(1.2rem, 3vw, 2.7rem); transform: rotate(14deg); }
+  .artwork--games:hover .piece-a { transform: translateY(-0.65rem) rotate(-13deg); }
+  .artwork--games:hover .piece-b { transform: translateY(0.5rem) rotate(7deg); }
+  .artwork--games:hover .piece-c { transform: translate(0.35rem, -0.35rem) rotate(20deg); }
+  .game-path { position: absolute; right: 8%; bottom: 21%; left: 8%; height: 30%; border: 2px dashed rgb(36 21 45 / 0.45); border-top: 0; border-radius: 0 0 50% 50%; transform: rotate(-7deg); }
+  .game-label { position: absolute; bottom: 5%; left: 5%; padding: 0.65rem 0.9rem; border: 1px solid #24152d; background: #f7f5f0; font-size: clamp(0.5rem, 0.8vw, 0.7rem); font-weight: 800; letter-spacing: 0.12em; transform: rotate(2deg); }
+
+  @media (max-width: 620px) {
+    .artwork { min-height: 27rem; }
+    .links-sidebar { display: none; }
+    .links-board { left: 5%; }
+    .bookmark-a { width: 60%; }
+    .bookmark-b { width: 37%; }
+    .racer-equation { top: 40%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bookmark, .racer-car, .game-piece { transition: none; }
+  }
+</style>

@@ -1,0 +1,36 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  index?: string;
+}
+const { eyebrow, title, intro, index = '01' } = Astro.props;
+---
+
+<section class="page-hero shell">
+  <div class="page-hero__meta">
+    <span>{index}</span>
+    <p>{eyebrow}</p>
+  </div>
+  <h1 set:html={title} />
+  <p class="page-hero__intro">{intro}</p>
+  <div class="page-hero__mark" aria-hidden="true"><span>&lt;</span><i></i><span>/&gt;</span></div>
+</section>
+
+<style>
+  .page-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.42fr); column-gap: clamp(2rem, 7vw, 8rem); align-items: end; min-height: clamp(31rem, 65vw, 48rem); padding-block: clamp(5rem, 10vw, 9rem) clamp(4rem, 8vw, 7rem); overflow: hidden; }
+  .page-hero__meta { grid-column: 1 / -1; align-self: start; display: flex; gap: 0.75rem; align-items: center; margin-bottom: clamp(4rem, 9vw, 8rem); color: var(--muted); font-size: 0.69rem; font-weight: 720; letter-spacing: 0.12em; text-transform: uppercase; }
+  .page-hero__meta span { color: var(--orange); }
+  h1 { position: relative; z-index: 1; max-width: 13ch; margin: 0; font-family: var(--font-display); font-size: clamp(3.4rem, 8.8vw, 9.2rem); font-weight: 580; letter-spacing: -0.075em; line-height: 0.88; text-wrap: balance; }
+  :global(.page-hero h1 em) { color: var(--orange); font-style: normal; }
+  .page-hero__intro { position: relative; z-index: 1; max-width: 37rem; padding-bottom: 0.35rem; color: var(--muted); font-size: clamp(1.05rem, 1.5vw, 1.25rem); line-height: 1.65; }
+  .page-hero__mark { position: absolute; top: 18%; right: 3%; display: flex; align-items: center; gap: 1rem; color: var(--orange-faint); font-family: var(--font-display); font-size: clamp(4rem, 10vw, 10rem); font-weight: 300; letter-spacing: -0.08em; pointer-events: none; transform: rotate(-7deg); }
+  .page-hero__mark i { width: 0.42em; height: 0.42em; background: var(--orange); opacity: 0.16; }
+  @media (max-width: 760px) {
+    .page-hero { grid-template-columns: 1fr; align-content: end; min-height: 38rem; }
+    .page-hero__meta { margin-bottom: 5rem; }
+    .page-hero__intro { margin-top: 2.5rem; }
+    .page-hero__mark { top: 17%; right: -10%; }
+  }
+</style>

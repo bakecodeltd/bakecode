@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+
+const capabilities = [
+  {
+    title: 'Full-stack application development',
+    body: 'Modern web applications designed as coherent systems — from domain logic and data flows to the final interface.',
+    tags: ['C# / .NET', 'React', 'TypeScript'],
+  },
+  {
+    title: 'Backend & API engineering',
+    body: 'Clear, reliable services and integrations built around real operational needs, sensible contracts and maintainable code.',
+    tags: ['ASP.NET Core', 'REST APIs', 'Integration'],
+  },
+  {
+    title: 'Software architecture',
+    body: 'Practical technical direction for new products and evolving systems, with complexity introduced only where it earns its place.',
+    tags: ['System design', 'Technical strategy', 'Review'],
+  },
+  {
+    title: 'Database design & integration',
+    body: 'Data models, queries and integrations shaped for correctness, performance and the way the software will actually be used.',
+    tags: ['PostgreSQL', 'Data modelling', 'Performance'],
+  },
+  {
+    title: 'Cloud & deployment',
+    body: 'Repeatable delivery, operational visibility and cloud infrastructure that keeps applications straightforward to ship and run.',
+    tags: ['CI/CD', 'Cloud', 'Infrastructure'],
+  },
+  {
+    title: 'Modernisation & problem-solving',
+    body: 'Untangling difficult systems, replacing fragile paths and finding a measured route from where the software is to where it needs to be.',
+    tags: ['Legacy systems', 'Refactoring', 'Diagnosis'],
+  },
+];
+---
+
+<BaseLayout
+  title="Software Engineering Services"
+  description="Software engineering and IT consultancy from Bake Code: full-stack applications, APIs, architecture, PostgreSQL, cloud deployment and modernisation."
+>
+  <PageHero
+    eyebrow="Services / Engineering practice"
+    title="Serious engineering.<br /><em>No theatre.</em>"
+    intro="Bake Code helps organisations design, build and improve software with focused senior engineering — from a difficult technical problem to a complete modern application."
+    index="02"
+  />
+
+  <section class="services-intro section-dark">
+    <div class="shell services-intro__grid">
+      <p class="eyebrow light"><span>The approach</span> / Useful from day one</p>
+      <h2 class="reveal">Clarity before complexity.<br />Care all the way through.</h2>
+      <div class="intro-copy reveal" data-delay="1">
+        <p>Good software work starts by understanding the actual problem — not by reaching for the largest process or newest tool.</p>
+        <p>Bake Code is founder-led and deliberately focused. You get direct technical thinking, honest trade-offs and software made to last.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="capabilities section">
+    <div class="shell">
+      <div class="capabilities-heading reveal">
+        <p class="eyebrow"><span>Capabilities</span> / Across the stack</p>
+        <h2>Where Bake Code can help.</h2>
+      </div>
+      <div class="capability-list">
+        {capabilities.map((capability, index) => (
+          <article class="capability reveal">
+            <span class="capability-number">{String(index + 1).padStart(2, '0')}</span>
+            <h3>{capability.title}</h3>
+            <p>{capability.body}</p>
+            <div class="tags">{capability.tags.map((tag) => <span>{tag}</span>)}</div>
+            <i class="capability-arrow" aria-hidden="true"><ArrowIcon /></i>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="working section-orange">
+    <div class="shell working-grid">
+      <p class="eyebrow"><span>Working together</span> / Lean by design</p>
+      <h2 class="reveal">Close to the problem.<br />Close to the code.</h2>
+      <div class="working-steps reveal" data-delay="1">
+        <div><span>01</span><strong>Understand</strong><p>Start with the problem, constraints and what a good outcome actually means.</p></div>
+        <div><span>02</span><strong>Shape</strong><p>Choose an approach that is robust, proportionate and easy to explain.</p></div>
+        <div><span>03</span><strong>Build</strong><p>Work in useful increments, keeping quality and maintainability visible throughout.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  .services-intro { padding-block: clamp(5rem, 10vw, 10rem); }
+  .services-intro__grid { display: grid; grid-template-columns: 0.5fr 1.25fr 0.58fr; gap: clamp(2rem, 5vw, 6rem); align-items: start; }
+  .services-intro h2 { margin: 0; font-family: var(--font-display); font-size: clamp(3rem, 6vw, 6.5rem); font-weight: 530; letter-spacing: -0.075em; line-height: 0.94; }
+  .intro-copy { color: var(--stone-light); font-size: 0.94rem; line-height: 1.8; }
+  .intro-copy p + p { margin-top: 1.5rem; }
+  .capabilities-heading { display: grid; grid-template-columns: 0.5fr 1.8fr; gap: 3rem; align-items: end; margin-bottom: clamp(4rem, 8vw, 7rem); }
+  .capabilities-heading h2 { margin: 0; font-family: var(--font-display); font-size: clamp(3rem, 6.5vw, 7rem); font-weight: 550; letter-spacing: -0.075em; line-height: 0.94; }
+  .capability-list { border-top: 1px solid var(--ink); }
+  .capability { position: relative; display: grid; grid-template-columns: 0.22fr 0.9fr 1fr 0.7fr auto; gap: clamp(1rem, 3vw, 3rem); align-items: center; padding-block: clamp(2rem, 3.5vw, 3.2rem); border-bottom: 1px solid var(--line); }
+  .capability-number { color: var(--orange); font-size: 0.62rem; font-weight: 750; }
+  .capability h3 { margin: 0; font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 2.7rem); font-weight: 560; letter-spacing: -0.05em; line-height: 1; }
+  .capability > p { margin: 0; color: var(--muted); font-size: 0.84rem; line-height: 1.7; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tags span { padding: 0.38rem 0.58rem; border: 1px solid var(--line); border-radius: 2rem; color: var(--muted); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .capability-arrow { display: grid; width: 2.8rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--ink); color: var(--cream); font-style: normal; transition: transform 200ms var(--ease), background 180ms ease; }
+  .capability:hover .capability-arrow { background: var(--orange); color: var(--ink); transform: rotate(-8deg); }
+  .working { padding-block: clamp(5rem, 10vw, 10rem); }
+  .working-grid > h2 { max-width: 13ch; margin: clamp(3rem, 7vw, 6rem) 0; font-family: var(--font-display); font-size: clamp(3rem, 7vw, 7.5rem); font-weight: 570; letter-spacing: -0.08em; line-height: 0.88; }
+  .working-steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
+  .working-steps > div { min-height: 16rem; padding: 1.5rem; border-right: 1px solid rgb(23 25 28 / 0.35); }
+  .working-steps > div:last-child { border: 0; }
+  .working-steps span { display: block; margin-bottom: 3.5rem; font-size: 0.62rem; font-weight: 780; }
+  .working-steps strong { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; letter-spacing: -0.04em; }
+  .working-steps p { max-width: 22rem; margin: 0.8rem 0 0; font-size: 0.84rem; line-height: 1.7; }
+
+  @media (max-width: 900px) {
+    .services-intro__grid, .capabilities-heading { grid-template-columns: 1fr; }
+    .capability { grid-template-columns: auto 1fr auto; }
+    .capability > p, .capability .tags { grid-column: 2 / -1; }
+    .capability-arrow { grid-column: 3; grid-row: 1; }
+  }
+  @media (max-width: 650px) {
+    .working-steps { grid-template-columns: 1fr; }
+    .working-steps > div { min-height: 0; padding-inline: 0; border-right: 0; border-bottom: 1px solid rgb(23 25 28 / 0.35); }
+    .working-steps > div:last-child { border-bottom: 0; }
+    .working-steps span { margin-bottom: 2rem; }
+  }
+</style>

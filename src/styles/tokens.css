@@ -1,0 +1,24 @@
+:root {
+  --ink: #17191c;
+  --ink-soft: #272a2f;
+  --cream: #f7f5f0;
+  --paper: #fffdfa;
+  --stone: #a6a29b;
+  --stone-light: #c9c5bd;
+  --muted: #686862;
+  --orange: #f46b45;
+  --orange-dark: #d94d2a;
+  --orange-faint: #f3c0ae;
+  --yellow: #f4d64e;
+  --line: rgb(23 25 28 / 0.16);
+  --font-display: 'Space Grotesk Variable', 'Arial Narrow', sans-serif;
+  --font-body: 'Manrope Variable', 'Segoe UI', sans-serif;
+  --shell: 1540px;
+  --gutter: clamp(1.2rem, 4vw, 4.5rem);
+  --header-height: 4.8rem;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 720px) {
+  :root { --header-height: 4.25rem; }
+}

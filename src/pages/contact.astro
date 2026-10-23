@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Get in touch with Bake Code about software engineering, consultancy or independent digital products."
+>
+  <section class="contact shell">
+    <p class="eyebrow"><span>Contact</span> / Start here</p>
+    <h1>Have a problem worth<br /><em>solving well?</em></h1>
+    <div class="contact-grid">
+      <div class="contact-intro reveal">
+        <p>For software engineering, consultancy, product questions or a thoughtful technical conversation, send a concise note about what you have in mind.</p>
+        <p>No elaborate brief required. A useful starting point is enough.</p>
+      </div>
+
+      <div class="contact-channel reveal" data-delay="1">
+        <span class="channel-label">Email</span>
+        {
+          site.contactEmail ? (
+            <a href={`mailto:${site.contactEmail}`}>
+              {site.contactEmail}<ArrowIcon external />
+            </a>
+          ) : (
+            <div class="email-pending">
+              <strong>Contact email to be confirmed</strong>
+              <p>Set <code>contactEmail</code> in <code>src/data/site.ts</code> to enable the mail link.</p>
+            </div>
+          )
+        }
+      </div>
+    </div>
+
+    <div class="contact-footer">
+      <div><span>Based</span><strong>{site.location}</strong></div>
+      <div><span>Good for</span><strong>Applications / APIs / Architecture / Products</strong></div>
+      <div><span>Response</span><strong>Direct, human and considered</strong></div>
+    </div>
+
+    <div class="contact-art" aria-hidden="true">
+      <span>&lt;</span><div><i></i><i></i><i></i><i></i></div><span>/&gt;</span>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact { position: relative; min-height: calc(100svh - var(--header-height)); padding-block: clamp(4rem, 8vw, 8rem) 0; overflow: hidden; }
+  h1 { position: relative; z-index: 2; max-width: 13ch; margin: clamp(3rem, 7vw, 6rem) 0; font-family: var(--font-display); font-size: clamp(3.8rem, 9vw, 9.5rem); font-weight: 560; letter-spacing: -0.085em; line-height: 0.83; }
+  h1 em { color: var(--orange); font-style: normal; }
+  .contact-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 0.75fr 1.25fr; gap: clamp(3rem, 9vw, 10rem); align-items: end; padding-bottom: clamp(5rem, 10vw, 9rem); }
+  .contact-intro { max-width: 36rem; color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.16rem); line-height: 1.8; }
+  .contact-intro p + p { margin-top: 1.25rem; }
+  .channel-label { display: block; margin-bottom: 1.25rem; color: var(--orange); font-size: 0.62rem; font-weight: 780; letter-spacing: 0.13em; text-transform: uppercase; }
+  .contact-channel > a { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-bottom: 1rem; border-bottom: 2px solid var(--ink); font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 4rem); font-weight: 540; letter-spacing: -0.05em; }
+  .contact-channel > a:hover { color: var(--orange); }
+  .email-pending { padding: 1.4rem; border: 1px solid var(--ink); background: var(--paper); box-shadow: 0.6rem 0.6rem 0 var(--orange); }
+  .email-pending strong { display: block; font-family: var(--font-display); font-size: clamp(1.3rem, 2.4vw, 2.1rem); font-weight: 600; letter-spacing: -0.04em; }
+  .email-pending p { margin: 0.8rem 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.65; }
+  .email-pending code { padding: 0.15rem 0.3rem; background: #e9e5dc; color: var(--ink); font-family: Consolas, monospace; }
+  .contact-footer { position: relative; z-index: 2; display: grid; grid-template-columns: 0.6fr 1fr 0.8fr; border-top: 1px solid var(--ink); }
+  .contact-footer > div { min-height: 7rem; padding: 1.25rem; border-right: 1px solid var(--line); }
+  .contact-footer > div:last-child { border: 0; }
+  .contact-footer span { display: block; margin-bottom: 1.2rem; color: var(--muted); font-size: 0.58rem; font-weight: 760; letter-spacing: 0.12em; text-transform: uppercase; }
+  .contact-footer strong { font-family: var(--font-display); font-size: 0.95rem; font-weight: 570; }
+  .contact-art { position: absolute; z-index: 0; top: 12%; right: -5%; display: flex; align-items: center; color: var(--orange-faint); font-family: var(--font-display); font-size: clamp(9rem, 27vw, 28rem); font-weight: 300; line-height: 0.8; opacity: 0.22; transform: rotate(-8deg); }
+  .contact-art div { display: grid; grid-template-columns: 1fr 1fr; gap: 0.05em; }
+  .contact-art i { width: 0.08em; aspect-ratio: 1; background: currentColor; }
+
+  @media (max-width: 780px) {
+    .contact-grid, .contact-footer { grid-template-columns: 1fr; }
+    .contact-footer > div { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Privacy Policy — Draft"
+  description="Draft privacy policy for the Bake Code website, provided for review before publication."
+>
+  <PageHero
+    eyebrow="Privacy / Draft for legal review"
+    title="Privacy,<br /><em>plainly.</em>"
+    intro="This page is a working draft based only on the current website implementation. It must be reviewed and completed before being treated as legal advice or a final policy."
+    index="04"
+  />
+
+  <section class="policy section">
+    <div class="shell policy-grid">
+      <aside>
+        <p class="draft-badge">Draft / Review required</p>
+        <p>Last updated<br /><strong>23 October 2026</strong></p>
+        <nav aria-label="Privacy policy sections">
+          <a href="#overview">Overview</a>
+          <a href="#data">Data collected</a>
+          <a href="#hosting">Hosting</a>
+          <a href="#cookies">Cookies</a>
+          <a href="#rights">Your rights</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </aside>
+      <article class="policy-content">
+        <div class="review-note">
+          <strong>Review marker</strong>
+          <p>Confirm the company registration number, registered office, privacy contact address, hosting arrangements and whether any analytics or other services will be added before publishing this policy as final.</p>
+        </div>
+
+        <section id="overview">
+          <span>01</span><h2>Overview</h2>
+          <p>{site.name} (“Bake Code”, “we”, “us”) is responsible for this website. This draft explains the limited data handling associated with the website as currently implemented.</p>
+          <p>The current site is a static informational website. It does not include user accounts, a contact form, a database or application-level tracking.</p>
+        </section>
+
+        <section id="data">
+          <span>02</span><h2>Information we collect</h2>
+          <p>The website itself does not ask visitors to submit personal information. If you contact Bake Code by email once a contact address is configured, the information you choose to send will be used to read and respond to your enquiry.</p>
+          <p><strong>[REVIEW REQUIRED]</strong> Confirm the lawful basis, email retention approach and any business record-keeping requirements before final publication.</p>
+        </section>
+
+        <section id="hosting">
+          <span>03</span><h2>Hosting and technical data</h2>
+          <p>The site is configured for GitHub Pages. Like most hosting services, the hosting provider may process technical request information needed to deliver and secure the website, such as IP addresses, browser details and request timestamps.</p>
+          <p><strong>[REVIEW REQUIRED]</strong> Confirm the production hosting provider and link to the relevant provider privacy information after deployment settings are complete.</p>
+        </section>
+
+        <section id="cookies">
+          <span>04</span><h2>Cookies and analytics</h2>
+          <p>No analytics, advertising scripts or application cookies are implemented in the current website code. Fonts are served from the website build rather than requested from a third-party font service.</p>
+          <p>If these features change, this policy and any consent mechanism should be reviewed before the change is released.</p>
+        </section>
+
+        <section id="rights">
+          <span>05</span><h2>Your rights</h2>
+          <p>Depending on the circumstances, UK data protection law may give you rights over personal information held about you, including rights to access, correct or erase it, restrict or object to processing, and complain to the Information Commissioner’s Office.</p>
+          <p>This is a general summary, not legal advice. The final policy should explain which rights apply to Bake Code’s confirmed processing activities.</p>
+        </section>
+
+        <section id="contact">
+          <span>06</span><h2>Privacy contact</h2>
+          {site.contactEmail ? <p>Privacy questions can be sent to <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.</p> : <p><strong>[CONTACT DETAILS REQUIRED]</strong> Add the confirmed privacy contact email in <code>src/data/site.ts</code>.</p>}
+          <p>Company number: {site.companyNumber ?? '[TO BE CONFIRMED]'}<br />Registered office: {site.registeredOffice ?? '[TO BE CONFIRMED]'}</p>
+        </section>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .policy { background: var(--paper); }
+  .policy-grid { display: grid; grid-template-columns: 0.42fr 1.2fr; gap: clamp(3rem, 9vw, 10rem); align-items: start; }
+  aside { position: sticky; top: calc(var(--header-height) + 2rem); color: var(--muted); font-size: 0.75rem; line-height: 1.7; }
+  aside strong { color: var(--ink); }
+  .draft-badge { display: inline-flex; padding: 0.45rem 0.65rem; background: var(--orange); color: var(--ink); font-size: 0.58rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  aside nav { display: flex; flex-direction: column; margin-top: 2.5rem; border-top: 1px solid var(--line); }
+  aside nav a { padding: 0.65rem 0; border-bottom: 1px solid var(--line); color: var(--ink); }
+  aside nav a:hover { color: var(--orange-dark); }
+  .policy-content { max-width: 56rem; }
+  .review-note { margin-bottom: 4rem; padding: 1.5rem; border: 1px solid var(--orange-dark); background: #fff0e9; }
+  .review-note strong { display: block; color: var(--orange-dark); font-size: 0.65rem; letter-spacing: 0.09em; text-transform: uppercase; }
+  .review-note p { margin: 0.75rem 0 0; font-size: 0.84rem; line-height: 1.7; }
+  .policy-content section { position: relative; padding: 0 0 4rem 4rem; }
+  .policy-content section > span { position: absolute; top: 0.65rem; left: 0; color: var(--orange); font-size: 0.62rem; font-weight: 780; }
+  .policy-content h2 { margin-bottom: 1.6rem; font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.4rem); font-weight: 560; letter-spacing: -0.055em; }
+  .policy-content p { color: var(--muted); font-size: 0.92rem; line-height: 1.85; }
+  .policy-content p strong { color: var(--ink); }
+  .policy-content a { color: var(--orange-dark); text-decoration: underline; text-underline-offset: 0.25em; }
+  .policy-content code { padding: 0.15rem 0.3rem; background: #ebe7de; color: var(--ink); font-family: Consolas, monospace; }
+  @media (max-width: 760px) {
+    .policy-grid { grid-template-columns: 1fr; }
+    aside { position: static; }
+    aside nav { display: none; }
+    .policy-content section { padding-left: 2.5rem; }
+  }
+</style>

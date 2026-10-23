@@ -1,0 +1,64 @@
+---
+import Logo from './Logo.astro';
+import { navigation } from '../data/site';
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="header-inner shell">
+    <a class="logo-link" href="/" aria-label="Bake Code home"><Logo /></a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {
+        navigation.map((item) => (
+          <a href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>{item.label}</a>
+        ))
+      }
+    </nav>
+
+    <details class="mobile-menu">
+      <summary><span>Menu</span><span class="menu-icon" aria-hidden="true"></span></summary>
+      <nav aria-label="Mobile navigation">
+        {
+          navigation.map((item, index) => (
+            <a href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>
+              <span>{String(index + 1).padStart(2, '0')}</span>{item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    z-index: 50;
+    top: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 13%, transparent);
+    background: color-mix(in srgb, var(--cream) 91%, transparent);
+    backdrop-filter: blur(16px);
+  }
+
+  .header-inner { height: var(--header-height); display: flex; align-items: center; justify-content: space-between; }
+  .logo-link { display: inline-flex; color: inherit; }
+  .desktop-nav { display: flex; align-items: center; gap: clamp(1.4rem, 3vw, 2.8rem); }
+  .desktop-nav a { position: relative; color: var(--ink); font-size: 0.77rem; font-weight: 650; letter-spacing: 0.09em; text-transform: uppercase; }
+  .desktop-nav a::after { position: absolute; right: 0; bottom: -0.5rem; left: 0; height: 2px; background: var(--orange); content: ''; transform: scaleX(0); transform-origin: right; transition: transform 220ms var(--ease); }
+  .desktop-nav a:hover::after, .desktop-nav a[aria-current='page']::after { transform: scaleX(1); transform-origin: left; }
+  .mobile-menu { display: none; }
+
+  @media (max-width: 720px) {
+    .desktop-nav { display: none; }
+    .mobile-menu { display: block; }
+    summary { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.08em; list-style: none; text-transform: uppercase; }
+    summary::-webkit-details-marker { display: none; }
+    .menu-icon { position: relative; width: 1.25rem; height: 0.8rem; border-top: 1.5px solid; border-bottom: 1.5px solid; transition: transform 200ms ease; }
+    details[open] .menu-icon { transform: rotate(90deg); }
+    .mobile-menu nav { position: fixed; inset: var(--header-height) 0 auto; display: grid; padding: 1.5rem var(--gutter) 2rem; border-bottom: 1px solid var(--line); background: var(--cream); box-shadow: 0 1.5rem 3rem rgb(23 25 28 / 0.12); }
+    .mobile-menu nav a { display: flex; align-items: baseline; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); color: var(--ink); font-family: var(--font-display); font-size: 1.65rem; font-weight: 580; letter-spacing: -0.04em; }
+    .mobile-menu nav a span { color: var(--orange); font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.08em; }
+  }
+</style>

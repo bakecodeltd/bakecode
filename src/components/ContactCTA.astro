@@ -1,0 +1,30 @@
+---
+import ArrowIcon from './ArrowIcon.astro';
+---
+
+<section class="contact-cta section-dark">
+  <div class="shell contact-grid reveal">
+    <p class="eyebrow light"><span>Next</span> / A good place to start</p>
+    <h2>Have something in mind?<br /><em>Let’s build something good.</em></h2>
+    <a class="circle-link" href="/contact">
+      <span>Get in touch</span>
+      <ArrowIcon />
+    </a>
+  </div>
+</section>
+
+<style>
+  .contact-cta { position: relative; overflow: hidden; padding-block: clamp(5rem, 10vw, 9rem); }
+  .contact-cta::before { position: absolute; inset: auto -4rem -12rem auto; width: clamp(20rem, 40vw, 36rem); aspect-ratio: 1; border: 1px solid rgb(247 245 240 / 0.12); border-radius: 50%; box-shadow: 0 0 0 4rem rgb(247 245 240 / 0.025), 0 0 0 8rem rgb(247 245 240 / 0.018); content: ''; }
+  .contact-grid { position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 3rem; }
+  .eyebrow { grid-column: 1 / -1; }
+  h2 { max-width: 1000px; margin: clamp(2rem, 5vw, 4rem) 0 0; color: var(--cream); font-family: var(--font-display); font-size: clamp(3rem, 7vw, 7.25rem); font-weight: 520; letter-spacing: -0.075em; line-height: 0.94; }
+  h2 em { color: var(--orange); font-style: normal; }
+  .circle-link { display: flex; width: clamp(8rem, 12vw, 10.5rem); aspect-ratio: 1; flex-direction: column; justify-content: space-between; padding: 1.4rem; border-radius: 50%; background: var(--orange); color: var(--ink); font-size: 0.78rem; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; transition: transform 280ms var(--ease), background 200ms ease; }
+  .circle-link :global(svg) { align-self: flex-end; font-size: 1.25rem; }
+  .circle-link:hover { background: var(--cream); transform: rotate(-4deg) scale(1.04); }
+  @media (max-width: 700px) {
+    .contact-grid { grid-template-columns: 1fr; align-items: start; }
+    .circle-link { margin-left: auto; }
+  }
+</style>

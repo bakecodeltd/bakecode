@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Bake Code is a founder-led independent UK software company balancing professional software engineering with original digital products."
+>
+  <PageHero
+    eyebrow="About / The studio"
+    title="Independent<br />by <em>design.</em>"
+    intro="Bake Code is a founder-led software company. It combines professional engineering work with the freedom to design, build and operate original digital products."
+    index="03"
+  />
+
+  <section class="identity section-dark">
+    <div class="shell identity-grid">
+      <p class="eyebrow light"><span>The identity</span> / One focused studio</p>
+      <div class="identity-statement reveal">
+        <p>Part engineering practice.</p>
+        <p>Part product workshop.</p>
+        <p><em>Entirely Bake Code.</em></p>
+      </div>
+      <div class="identity-copy reveal" data-delay="1">
+        <p>The two sides sharpen each other. Consultancy keeps the work grounded in real systems and real constraints. Product development creates room to explore, experiment and own every decision from the first sketch to the running application.</p>
+        <p>That balance is the point: disciplined engineering with an independent maker’s curiosity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles section">
+    <div class="shell principles-grid">
+      <div class="principles-heading reveal">
+        <p class="eyebrow"><span>Working principles</span> / What matters</p>
+        <h2>Enough process to be clear.<br /><em>Enough freedom to make it good.</em></h2>
+      </div>
+      <div class="principle-list">
+        <article class="reveal">
+          <span>01</span>
+          <h3>Practical over performative</h3>
+          <p>The work should solve a real problem. Decisions are explained, trade-offs are visible and technology serves the outcome.</p>
+        </article>
+        <article class="reveal" data-delay="1">
+          <span>02</span>
+          <h3>Quality without ceremony</h3>
+          <p>Careful engineering does not need to feel heavy. Keep the system understandable and make each layer earn its place.</p>
+        </article>
+        <article class="reveal">
+          <span>03</span>
+          <h3>Always learning</h3>
+          <p>Software keeps moving. Curiosity, experimentation and honest reflection are part of making better choices.</p>
+        </article>
+        <article class="reveal" data-delay="1">
+          <span>04</span>
+          <h3>Details make the whole</h3>
+          <p>A clear error message, a well-shaped API and a considered interaction all belong to the same standard of work.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="name-story section-orange">
+    <div class="shell name-grid">
+      <p class="eyebrow"><span>Why Bake Code?</span> / A working metaphor</p>
+      <h2 class="reveal">Good ingredients.<br />Measured decisions.<br /><em>Something complete.</em></h2>
+      <div class="recipe-mark reveal" data-delay="1" aria-hidden="true">
+        <span>&lt;</span><div><i></i><i></i><i></i></div><span>/&gt;</span>
+      </div>
+      <p class="name-copy reveal">The name is a quiet reminder that software is made, not summoned. Bring the right pieces together, understand how they behave, and keep refining until the result works as a whole.</p>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  .identity { padding-block: clamp(6rem, 12vw, 12rem); }
+  .identity-grid { display: grid; grid-template-columns: 0.46fr 1.35fr 0.58fr; gap: clamp(2rem, 5vw, 6rem); align-items: start; }
+  .identity-statement { font-family: var(--font-display); font-size: clamp(2.7rem, 6vw, 6.5rem); font-weight: 520; letter-spacing: -0.075em; line-height: 0.94; }
+  .identity-statement p { margin: 0 0 0.45rem; }
+  .identity-statement em { color: var(--orange); font-style: normal; }
+  .identity-copy { align-self: end; color: var(--stone-light); font-size: 0.92rem; line-height: 1.8; }
+  .identity-copy p + p { margin-top: 1.5rem; }
+  .principles-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(3rem, 8vw, 9rem); }
+  .principles-heading h2 { margin: clamp(3rem, 6vw, 5rem) 0 0; font-family: var(--font-display); font-size: clamp(3rem, 5.6vw, 6rem); font-weight: 550; letter-spacing: -0.07em; line-height: 0.95; }
+  .principles-heading h2 em { color: var(--orange); font-style: normal; }
+  .principle-list { border-top: 1px solid var(--ink); }
+  .principle-list article { display: grid; grid-template-columns: auto 0.8fr 1fr; gap: 2rem; padding-block: 2.5rem; border-bottom: 1px solid var(--line); }
+  .principle-list span { color: var(--orange); font-size: 0.6rem; font-weight: 780; }
+  .principle-list h3 { margin: 0; font-family: var(--font-display); font-size: clamp(1.4rem, 2.2vw, 2.2rem); font-weight: 580; letter-spacing: -0.045em; line-height: 1.05; }
+  .principle-list p { margin: 0; color: var(--muted); font-size: 0.84rem; line-height: 1.75; }
+  .name-story { overflow: hidden; padding-block: clamp(5rem, 10vw, 10rem); }
+  .name-grid { position: relative; display: grid; grid-template-columns: 1fr 0.72fr; column-gap: clamp(3rem, 8vw, 9rem); }
+  .name-grid > .eyebrow { grid-column: 1 / -1; }
+  .name-grid h2 { position: relative; z-index: 2; margin: clamp(4rem, 8vw, 7rem) 0 0; font-family: var(--font-display); font-size: clamp(3.5rem, 7.5vw, 8rem); font-weight: 560; letter-spacing: -0.08em; line-height: 0.86; }
+  .name-grid h2 em { color: var(--cream); font-style: normal; }
+  .name-copy { position: relative; z-index: 2; max-width: 35rem; align-self: end; margin: 4rem 0 0; font-size: clamp(0.95rem, 1.3vw, 1.1rem); line-height: 1.8; }
+  .recipe-mark { position: absolute; top: 12%; right: -5%; display: flex; align-items: center; color: rgb(23 25 28 / 0.1); font-family: var(--font-display); font-size: clamp(10rem, 28vw, 27rem); line-height: 0.7; transform: rotate(-7deg); }
+  .recipe-mark div { display: flex; gap: 0.05em; }
+  .recipe-mark i { width: 0.08em; height: 0.08em; background: currentColor; }
+
+  @media (max-width: 900px) {
+    .identity-grid, .principles-grid, .name-grid { grid-template-columns: 1fr; }
+    .identity-copy { max-width: 42rem; }
+    .name-copy { max-width: 34rem; }
+  }
+  @media (max-width: 600px) {
+    .principle-list article { grid-template-columns: auto 1fr; }
+    .principle-list p { grid-column: 2; }
+  }
+</style>
