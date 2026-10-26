@@ -32,7 +32,7 @@ import { site } from '../data/site';
       <article class="policy-content">
         <div class="review-note">
           <strong>Review marker</strong>
-          <p>Confirm the company registration number, registered office, privacy contact address, hosting arrangements and whether any analytics or other services will be added before publishing this policy as final.</p>
+          <p>Confirm the hosting arrangements and whether any analytics or other services will be added before publishing this policy as final.</p>
         </div>
 
         <section id="overview">
@@ -43,7 +43,7 @@ import { site } from '../data/site';
 
         <section id="data">
           <span>02</span><h2>Information we collect</h2>
-          <p>The website itself does not ask visitors to submit personal information. If you contact Bake Code by email once a contact address is configured, the information you choose to send will be used to read and respond to your enquiry.</p>
+          <p>The website itself does not ask visitors to submit personal information. If you contact Bake Code at <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>, the information you choose to send will be used to read and respond to your enquiry.</p>
           <p><strong>[REVIEW REQUIRED]</strong> Confirm the lawful basis, email retention approach and any business record-keeping requirements before final publication.</p>
         </section>
 
@@ -68,7 +68,7 @@ import { site } from '../data/site';
         <section id="contact">
           <span>06</span><h2>Privacy contact</h2>
           {site.contactEmail ? <p>Privacy questions can be sent to <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.</p> : <p><strong>[CONTACT DETAILS REQUIRED]</strong> Add the confirmed privacy contact email in <code>src/data/site.ts</code>.</p>}
-          <p>Company number: {site.companyNumber ?? '[TO BE CONFIRMED]'}<br />Registered office: {site.registeredOffice ?? '[TO BE CONFIRMED]'}</p>
+          <p>Company number: <a href={site.companiesHouseUrl} target="_blank" rel="noreferrer">{site.companyNumber}</a><br />Registered office: {site.registeredOffice}</p>
         </section>
       </article>
     </div>

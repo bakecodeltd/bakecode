@@ -1,6 +1,6 @@
 # Bake Code website
 
-The production website for **Bake Code Ltd**, built as a fully static Astro site for deployment to GitHub Pages at [bakecode.co.uk](https://bakecode.co.uk).
+The production website for **BAKE CODE LTD**, built as a fully static Astro site for deployment to GitHub Pages at [bakecode.co.uk](https://bakecode.co.uk).
 
 ## Local development
 
@@ -25,9 +25,9 @@ The production build is written to `dist/`.
 
 ## Content and configuration
 
-Company-wide values live in `src/data/site.ts`. Add the confirmed contact email, company registration number and registered office there before launch. Products live in `src/data/products.ts`; add another object to the array to extend the product pages without changing their layouts.
+Company-wide values live in `src/data/site.ts`. Products live in `src/data/products.ts`; add another object to the array to extend the product pages without changing their layouts.
 
-Harvey Games intentionally has a `null` URL. Its external link appears automatically when a valid URL is configured.
+A product with a `null` URL is shown without an external link until one is configured.
 
 ## GitHub Pages deployment
 
@@ -46,7 +46,6 @@ The Astro `site` value is `https://bakecode.co.uk` and no repository `base` path
 
 ## Pre-launch checklist
 
-- Replace legal and contact placeholders in `src/data/site.ts`.
 - Have the draft privacy policy reviewed against the final hosting, email and analytics setup.
 - Confirm the custom domain and HTTPS status in GitHub Pages settings.
 - Check the deployed canonical URLs and social sharing preview.

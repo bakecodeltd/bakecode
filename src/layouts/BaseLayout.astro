@@ -21,10 +21,18 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: site.name,
+  legalName: site.name,
   url: site.domain,
+  email: site.contactEmail,
   description: site.description,
+  identifier: site.companyNumber,
+  sameAs: [site.companiesHouseUrl],
   address: {
     '@type': 'PostalAddress',
+    streetAddress: '64 Goldsmith Road',
+    addressLocality: 'Churchdown',
+    addressRegion: 'Gloucester',
+    postalCode: 'GL3 1FX',
     addressCountry: 'GB',
   },
 };

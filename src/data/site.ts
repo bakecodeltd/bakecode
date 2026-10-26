@@ -1,13 +1,14 @@
 export const site = {
-  name: 'Bake Code Ltd',
+  name: 'BAKE CODE LTD',
   shortName: 'Bake Code',
   domain: 'https://bakecode.co.uk',
   location: 'United Kingdom',
   description:
     'An independent UK software studio building useful digital products and engineering modern applications.',
-  contactEmail: null as string | null,
-  companyNumber: null as string | null,
-  registeredOffice: null as string | null,
+  contactEmail: 'jemin@bakecode.co.uk',
+  companyNumber: '14589611',
+  companiesHouseUrl: 'https://find-and-update.company-information.service.gov.uk/company/14589611',
+  registeredOffice: '64 Goldsmith Road, Churchdown, Gloucester GL3 1FX',
   socialLinks: [] as Array<{ label: string; url: string }>,
 } as const;
 

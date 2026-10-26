@@ -37,7 +37,8 @@ const { product, number, reverse = false, compact = false } = Astro.props;
   .product-feature { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.55fr); min-height: clamp(36rem, 55vw, 49rem); border-top: 1px solid var(--line); }
   .product-feature.reverse { grid-template-columns: minmax(18rem, 0.55fr) minmax(0, 1.45fr); }
   .product-feature.reverse .product-art { order: 2; }
-  .product-art { min-width: 0; }
+  .product-art { display: flex; flex-direction: column; min-width: 0; }
+  .artwork { flex: 1; width: 100%; }
   .product-copy { display: flex; flex-direction: column; padding: clamp(2rem, 4.5vw, 4.5rem); background: var(--paper); }
   .product-meta { display: flex; gap: 0.75rem; align-items: center; color: var(--muted); font-size: 0.64rem; font-weight: 750; letter-spacing: 0.1em; text-transform: uppercase; }
   .product-meta span { color: var(--orange); }

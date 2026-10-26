@@ -32,7 +32,7 @@ const year = new Date().getFullYear();
   <div class="shell legal-row">
     <p>© {year} {site.name}</p>
     <p>
-      Company no. {site.companyNumber ?? '[TO BE CONFIRMED]'} · Registered office: {site.registeredOffice ?? '[TO BE CONFIRMED]'}
+      Company no. <a class="register-link" href={site.companiesHouseUrl} target="_blank" rel="noreferrer">{site.companyNumber}</a> · Registered office: {site.registeredOffice}
     </p>
     <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
   </div>
@@ -51,6 +51,8 @@ const year = new Date().getFullYear();
   .legal-row { display: grid; grid-template-columns: auto 1fr auto; gap: 2rem; align-items: center; min-height: 5.25rem; border-top: 1px solid rgb(247 245 240 / 0.14); color: var(--stone-light); font-size: 0.68rem; line-height: 1.5; }
   .legal-row p:nth-child(2) { text-align: center; }
   .legal-row a { color: var(--cream); white-space: nowrap; }
+  .register-link { text-decoration: underline; text-underline-offset: 0.2em; }
+  .register-link:hover { color: var(--orange); }
   .legal-row a span { margin-left: 0.35rem; color: var(--orange); }
 
   @media (max-width: 800px) {

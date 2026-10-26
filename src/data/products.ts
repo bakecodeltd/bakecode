@@ -1,4 +1,4 @@
-export type ProductTheme = 'links' | 'racer' | 'games';
+export type ProductTheme = 'links' | 'fit';
 
 export interface Product {
   slug: string;
@@ -25,27 +25,15 @@ export const products: Product[] = [
     theme: 'links',
   },
   {
-    slug: 'maths-racer',
-    name: 'Maths Racer',
-    category: 'Education / Interactive Learning',
+    slug: 'fit',
+    name: 'Fit',
+    category: 'Health / Family',
     description:
-      'Making maths practice faster, more engaging and more fun through interactive learning experiences.',
+      'A calm place to track body measurements and daily habits, for you and the people you look after.',
     detail:
-      'A focused learning experience that turns repetition into momentum, helping players build speed and confidence as they practise.',
-    url: 'https://mathsracer.com',
+      'Each person keeps their own profile, so measurements, growth and everyday habits stay clear and easy to return to.',
+    url: 'https://jeminpro.com/fit/',
     status: 'Live',
-    theme: 'racer',
-  },
-  {
-    slug: 'harvey-games',
-    name: 'Harvey Games',
-    category: 'Browser Games / Entertainment',
-    description:
-      'Playful browser-based experiences built for fun, experimentation and discovery.',
-    detail:
-      'A space for small, characterful games where a simple idea can be tested, tuned and turned into something worth playing.',
-    url: null,
-    status: 'In development',
-    theme: 'games',
+    theme: 'fit',
   },
 ];
