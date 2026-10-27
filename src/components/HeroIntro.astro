@@ -1,0 +1,130 @@
+---
+import { story } from '../data/story';
+---
+
+<section class="hero shell">
+  <div class="hero-lead">
+    <h1>Bake Code is a software company offering <em>software engineering</em> and building <em>independent products</em>.</h1>
+    <p class="hero-hook">{story.hook}</p>
+    <div class="hero-ctas">
+      <a class="button" href="#services">See services</a>
+      <a class="button button--ghost" href="#products">See products</a>
+    </div>
+  </div>
+  <figure class="hero-mascot">
+    <img
+      src="/assets/mascot.png"
+      alt="Bake Code mascot in a chef’s hat and orange hoodie, holding a laptop and giving a thumbs up"
+      width="700"
+      height="700"
+    />
+    <span class="hero-mascot__shadow" aria-hidden="true"></span>
+    <span class="hero-mascot__mark hero-mascot__mark--code" aria-hidden="true">{`</>`}</span>
+    <span class="hero-mascot__mark hero-mascot__mark--braces" aria-hidden="true">{`{ }`}</span>
+    <span class="hero-mascot__mark hero-mascot__mark--dash" aria-hidden="true"></span>
+    <span class="hero-mascot__mark hero-mascot__mark--dash hero-mascot__mark--dash-b" aria-hidden="true"></span>
+  </figure>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 20rem);
+    column-gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: start;
+    padding-block: clamp(3.25rem, 7vh, 5.5rem) clamp(3.5rem, 7vh, 5.5rem);
+  }
+  .hero-lead { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+  .hero h1 {
+    max-width: 16em;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.85rem, 3vw, 2.7rem);
+    font-weight: 560;
+    letter-spacing: -0.04em;
+    line-height: 1.18;
+  }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero-hook {
+    max-width: 38rem;
+    margin: 1.25rem 0 0;
+    color: var(--muted);
+    font-size: clamp(1.02rem, 1.15vw, 1.1rem);
+    line-height: 1.7;
+  }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+
+  .hero-mascot {
+    --drift: -0.55rem;
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    width: min(100%, 20rem);
+    margin: 0.35rem 0 0;
+    align-self: start;
+    justify-self: end;
+    animation: mascot-arrive 700ms var(--ease) 180ms both;
+  }
+  .hero-mascot img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    animation: mascot-float 6s ease-in-out 900ms infinite;
+  }
+  .hero-mascot__shadow {
+    position: absolute;
+    z-index: -1;
+    left: 20%;
+    right: 18%;
+    bottom: 0.6%;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: rgb(23 25 28 / 0.34);
+    filter: blur(6px);
+    transform-origin: center;
+    animation: mascot-shadow 6s ease-in-out 900ms infinite;
+  }
+  .hero-mascot__mark {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    color: var(--orange);
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 560;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    animation: mascot-drift 5.5s ease-in-out infinite;
+  }
+  .hero-mascot__mark--code { top: 36%; left: 0.2rem; animation-duration: 5s; rotate: -8deg; }
+  .hero-mascot__mark--braces { top: 46%; right: 0.15rem; font-size: 0.85rem; animation-duration: 6.5s; animation-delay: -1.6s; rotate: 7deg; }
+  .hero-mascot__mark--dash { top: 8%; right: 4%; width: 1.05rem; height: 0.16rem; border-radius: 1rem; background: var(--orange); animation-duration: 4.2s; animation-delay: -0.8s; rotate: -32deg; }
+  .hero-mascot__mark--dash-b { top: 15%; right: 0.2rem; width: 0.7rem; animation-duration: 7s; animation-delay: -2.2s; rotate: -18deg; }
+
+  @keyframes mascot-arrive { from { opacity: 0; transform: translateY(1.2rem); } to { opacity: 1; transform: none; } }
+  @keyframes mascot-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes mascot-shadow { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(0.82, 0.72); opacity: 0.28; } }
+  @keyframes mascot-drift { 0%, 100% { translate: 0 0; opacity: 0.45; } 50% { translate: 0 var(--drift); opacity: 1; } }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero h1 { max-width: none; }
+    .hero-mascot {
+      --drift: -0.28rem;
+      width: 11.5rem;
+      margin: 1.5rem auto 0;
+      justify-self: center;
+      align-self: center;
+      order: 3;
+    }
+    .hero-mascot__mark { font-size: 0.72rem; }
+    .hero-mascot__mark--code { left: 0.15rem; }
+    .hero-mascot__mark--braces { right: 0.15rem; font-size: 0.68rem; }
+    .hero-mascot__mark--dash { right: 0.35rem; width: 0.7rem; }
+    .hero-mascot__mark--dash-b { right: 0.1rem; top: 18%; width: 0.48rem; }
+  }
+</style>

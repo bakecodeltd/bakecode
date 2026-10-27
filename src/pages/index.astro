@@ -2,53 +2,18 @@
 import ArrowIcon from '../components/ArrowIcon.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactSection from '../components/ContactSection.astro';
+import HeroIntro from '../components/HeroIntro.astro';
 import ProductsSection from '../components/ProductsSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
+import StorySection from '../components/StorySection.astro';
 ---
 
 <BaseLayout
   title="Bake Code"
   description="Bake Code Ltd is a software company offering software engineering and building independent products."
 >
-  <section class="hero shell">
-    <h1>Bake Code is a software company offering <em>software engineering</em> and building <em>independent products</em>.</h1>
-    <figure class="hero-mascot">
-      <img
-        src="/assets/mascot.png"
-        alt="Bake Code mascot in a chef’s hat and orange hoodie, holding a laptop and giving a thumbs up"
-        width="700"
-        height="700"
-      />
-      <span class="hero-mascot__shadow" aria-hidden="true"></span>
-      <span class="hero-mascot__mark hero-mascot__mark--code" aria-hidden="true">{`</>`}</span>
-      <span class="hero-mascot__mark hero-mascot__mark--braces" aria-hidden="true">{`{ }`}</span>
-      <span class="hero-mascot__mark hero-mascot__mark--dash" aria-hidden="true"></span>
-      <span class="hero-mascot__mark hero-mascot__mark--dash hero-mascot__mark--dash-b" aria-hidden="true"></span>
-    </figure>
-
-    <div class="hero-story">
-      <div class="hero-bio">
-        <p>Hi, I’m Jemin. I’ve been developing software for around two decades, working with small to large companies across finance, banking, property data, fleet management, and healthcare. You can read more about this work in the <a href="#services">Services section</a>.</p>
-        <p>I’ve always loved tinkering with technology, and over the years I’ve built several products to solve problems I’ve run into myself. Here are a few examples:</p>
-        <ul class="hero-examples">
-          <li>
-            <strong>Food inventory.</strong>
-            We cook in large batches and store it in a chest freezer, labelled with the date. As the freezer filled up, we lost track of what to use first. So I built an app that shows what’s in the freezer and helps us plan meals before anything expires.
-          </li>
-          <li>
-            <strong>Home inventory.</strong>
-            As a DIY enthusiast, I have plenty of tools and household items that tend to go missing. My inventory tracker records exactly where each item lives, down to the room and shelf number.
-          </li>
-          <li>
-            <strong>Quiz app.</strong>
-            To help my child prepare for competitive exams, I built a quiz app that lets me load questions from any source for practice tests. It highlights their weak areas so they know exactly what to work on next.
-          </li>
-        </ul>
-        <p>Those three stayed personal. The public apps are KeepMyLinks and Fit — you can browse them in the <a href="#products">Products section</a>.</p>
-        <p>Over the past few years I’ve been exploring AI. It has dramatically sped up how I build, and it also helps me with research, design, DevOps and — most importantly — marketing, which is completely new territory for me.</p>
-      </div>
-    </div>
-  </section>
+  <HeroIntro />
+  <StorySection />
 
   <section class="paths section">
     <div class="shell">
@@ -80,28 +45,6 @@ import ServicesSection from '../components/ServicesSection.astro';
 </BaseLayout>
 
 <style>
-  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(14rem, 20rem); grid-template-areas: "title mascot" "story mascot"; column-gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; padding-block: clamp(3.25rem, 7vh, 5.5rem) clamp(3.5rem, 7vh, 5.5rem); }
-  .hero h1 { grid-area: title; max-width: 16em; margin: 0; font-family: var(--font-display); font-size: clamp(1.85rem, 3vw, 2.7rem); font-weight: 560; letter-spacing: -0.04em; line-height: 1.18; }
-  .hero-mascot { --drift: -0.55rem; position: relative; z-index: 0; isolation: isolate; grid-area: mascot; width: min(100%, 20rem); margin: 0; align-self: end; justify-self: end; animation: mascot-arrive 700ms var(--ease) 180ms both; }
-  .hero-mascot img { position: relative; z-index: 1; display: block; width: 100%; height: auto; animation: mascot-float 6s ease-in-out 900ms infinite; }
-  .hero-mascot__shadow { position: absolute; z-index: -1; left: 20%; right: 18%; bottom: 0.6%; height: 0.7rem; border-radius: 50%; background: rgb(23 25 28 / 0.34); filter: blur(6px); transform-origin: center; animation: mascot-shadow 6s ease-in-out 900ms infinite; }
-  .hero-mascot__mark { position: absolute; z-index: 2; display: block; color: var(--orange); font-family: var(--font-display); font-size: 0.95rem; font-weight: 560; letter-spacing: -0.04em; line-height: 1; pointer-events: none; user-select: none; animation: mascot-drift 5.5s ease-in-out infinite; }
-  .hero-mascot__mark--code { top: 36%; left: 0.2rem; animation-duration: 5s; rotate: -8deg; }
-  .hero-mascot__mark--braces { top: 46%; right: 0.15rem; font-size: 0.85rem; animation-duration: 6.5s; animation-delay: -1.6s; rotate: 7deg; }
-  .hero-mascot__mark--dash { top: 8%; right: 4%; width: 1.05rem; height: 0.16rem; border-radius: 1rem; background: var(--orange); animation-duration: 4.2s; animation-delay: -0.8s; rotate: -32deg; }
-  .hero-mascot__mark--dash-b { top: 15%; right: 0.2rem; width: 0.7rem; animation-duration: 7s; animation-delay: -2.2s; rotate: -18deg; }
-  .hero h1 em { color: var(--orange); font-style: normal; }
-  .hero-story { grid-area: story; margin-top: clamp(2rem, 4vw, 3rem); }
-  .hero-bio { max-width: 42rem; color: var(--muted); font-size: clamp(1.02rem, 1.15vw, 1.08rem); line-height: 1.75; }
-  .hero-bio p { margin: 0 0 1.1rem; }
-  .hero-bio p:last-child { margin-bottom: 0; }
-  .hero-story a { color: var(--ink); font-weight: 750; text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 0.18em; }
-  .hero-story a:hover { color: var(--orange-dark); }
-  .hero-examples { margin: 0 0 1.1rem; padding: 0; list-style: none; }
-  .hero-examples li { margin: 0 0 1.1rem; }
-  .hero-examples li:last-child { margin-bottom: 0; }
-  .hero-examples strong { color: var(--ink); font-weight: 750; }
-
   .paths { border-top: 1px solid var(--line); }
   .paths-heading { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
   .path-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.15rem; }
@@ -116,25 +59,7 @@ import ServicesSection from '../components/ServicesSection.astro';
   .path-card:hover, .js .path-card.reveal.in-view:hover { box-shadow: 0 1.15rem 2.4rem rgb(23 25 28 / 0.08); transform: translateY(-0.35rem); }
   .path-card:hover .path-card__link :global(svg) { transform: translateX(0.25rem); }
 
-  @keyframes mascot-arrive { from { opacity: 0; transform: translateY(1.2rem); } to { opacity: 1; transform: none; } }
-  @keyframes mascot-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  @keyframes mascot-shadow { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(0.82, 0.72); opacity: 0.28; } }
-  @keyframes mascot-drift { 0%, 100% { translate: 0 0; opacity: 0.45; } 50% { translate: 0 var(--drift); opacity: 1; } }
-
-  @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; grid-template-areas: "title" "story" "mascot"; }
-    .hero h1 { max-width: none; }
-    .hero-mascot { --drift: -0.28rem; width: 11.5rem; margin: 1.5rem auto 0; justify-self: center; align-self: center; }
-    .hero-mascot__mark { font-size: 0.72rem; }
-    .hero-mascot__mark--code { left: 0.15rem; }
-    .hero-mascot__mark--braces { right: 0.15rem; font-size: 0.68rem; }
-    .hero-mascot__mark--dash { right: 0.35rem; width: 0.7rem; }
-    .hero-mascot__mark--dash-b { right: 0.1rem; top: 18%; width: 0.48rem; }
-    .hero-story { margin-top: 1.5rem; }
-  }
-
   @media (max-width: 760px) {
     .path-cards { grid-template-columns: 1fr; }
   }
-
 </style>

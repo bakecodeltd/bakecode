@@ -1,0 +1,97 @@
+---
+import { story } from '../data/story';
+---
+
+<section class="story section" id="story" aria-labelledby="story-title">
+  <div class="shell">
+    <div class="story-heading reveal">
+      <p class="eyebrow"><span>About</span></p>
+      <h2 class="section-title" id="story-title">Meet the code baker</h2>
+      <p class="section-lede">
+        {story.bioBefore}<a href="#services">{story.bioLinkLabel}</a>{story.bioAfter}
+      </p>
+      <p class="story-tinkering">{story.tinkering}</p>
+    </div>
+
+    <ul class="story-examples reveal">
+      {story.projects.map((project) => (
+        <li>
+          <strong>{project.title}.</strong>
+          {' '}{project.body}
+        </li>
+      ))}
+    </ul>
+
+    <p class="story-closing reveal">
+      {story.closingBefore}<a href="#products">{story.closingLinkLabel}</a>{story.closingAfter}
+    </p>
+
+    <aside class="story-ai reveal" aria-label="On AI">
+      <p class="story-ai__label">On AI</p>
+      <p>{story.ai}</p>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .story { border-top: 1px solid var(--line); }
+  .story-heading { max-width: 42rem; margin-bottom: clamp(1.5rem, 3vw, 2rem); }
+  .story-heading a,
+  .story-closing a {
+    color: var(--ink);
+    font-weight: 750;
+    text-decoration: underline;
+    text-decoration-color: var(--orange);
+    text-underline-offset: 0.18em;
+  }
+  .story-heading a:hover,
+  .story-closing a:hover { color: var(--orange-dark); }
+  .story-tinkering {
+    max-width: 40rem;
+    margin: 1.1rem 0 0;
+    color: var(--muted);
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.7;
+  }
+  .story-examples {
+    max-width: 42rem;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    list-style: none;
+    color: var(--muted);
+    font-size: clamp(1.02rem, 1.15vw, 1.08rem);
+    line-height: 1.75;
+  }
+  .story-examples li { margin: 0 0 1.1rem; }
+  .story-examples li:last-child { margin-bottom: 0; }
+  .story-examples strong { color: var(--ink); font-weight: 750; }
+  .story-closing {
+    max-width: 42rem;
+    margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+    color: var(--muted);
+    font-size: clamp(1.02rem, 1.15vw, 1.08rem);
+    line-height: 1.7;
+  }
+  .story-ai {
+    max-width: none;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .story-ai__label {
+    margin: 0 0 0.55rem;
+    color: var(--orange);
+    font-size: 0.66rem;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+  }
+  .story-ai p:not(.story-ai__label) {
+    margin: 0;
+    max-width: 48rem;
+    color: var(--stone-light);
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+</style>
