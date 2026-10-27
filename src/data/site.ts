@@ -4,7 +4,7 @@ export const site = {
   domain: 'https://bakecode.co.uk',
   location: 'United Kingdom',
   description:
-    'Bake Code Ltd is a software company offering IT consulting and building independent products.',
+    'Bake Code Ltd is a software company offering software engineering and building independent products.',
   contactEmail: 'jemin@bakecode.co.uk',
   companyNumber: '14589611',
   companiesHouseUrl: 'https://find-and-update.company-information.service.gov.uk/company/14589611',
@@ -15,16 +15,5 @@ export const site = {
 export const navigation = [
   { label: 'Services', href: '/#services' },
   { label: 'Products', href: '/#products' },
-  { label: 'Contact', href: '/contact' },
-] as const;
-
-export const expertise = [
-  'C#',
-  '.NET',
-  'React',
-  'TypeScript',
-  'PostgreSQL',
-  'APIs',
-  'Cloud Infrastructure',
-  'Software Architecture',
+  { label: 'Contact', href: '/#contact' },
 ] as const;

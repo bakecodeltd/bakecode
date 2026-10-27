@@ -6,9 +6,9 @@ import { products } from '../data/products';
 <div id="products" class="anchor">
   <section class="made-section">
     <div class="shell made-heading reveal">
-      <p class="eyebrow"><span>Products</span> / Made at Bake Code</p>
-      <h2 class="display-title">Independent products,<br /><em>thoughtfully built.</em></h2>
-      <p class="products-intro">Independent products are not a side project at Bake Code. They are where practical problems, creative experiments and careful engineering become things people can actually use.</p>
+      <p class="eyebrow"><span>Built in-house</span></p>
+      <h2 class="section-title">Products</h2>
+      <p class="section-lede">The in-house apps that are public. KeepMyLinks and Fit were each built for a real everyday problem, and anyone can use them.</p>
     </div>
     <div class="shell product-stack">
       {products.map((product, index) => (
@@ -19,38 +19,14 @@ import { products } from '../data/products';
         />
       ))}
     </div>
-  </section>
-
-  <section class="product-note section">
-    <div class="shell note-grid reveal">
-      <p class="eyebrow"><span>Always making</span> / The next build</p>
-      <h2>Products begin as questions.</h2>
-      <div>
-        <p>Could this task be clearer? Could a daily habit be easier to keep? Could looking after people feel a little simpler?</p>
-        <p>Bake Code explores those questions by designing, building and operating original software — one useful release at a time.</p>
-      </div>
-    </div>
+    <p class="shell products-next">More products are on the way — one useful release at a time.</p>
   </section>
 </div>
 
 <style>
   .anchor { scroll-margin-top: calc(var(--header-height) + 1rem); }
   .made-section { padding-block: clamp(5rem, 10vw, 10rem); background: var(--paper); }
-  .made-heading { display: grid; grid-template-columns: 0.55fr 1.35fr 0.7fr; gap: 2rem; align-items: end; margin-bottom: clamp(4rem, 8vw, 7rem); }
-  .made-heading h2 { font-size: clamp(3rem, 6.5vw, 7rem); }
-  .made-heading h2 em { color: var(--orange); font-style: normal; }
-  .products-intro { margin: 0; color: var(--muted); font-size: 0.94rem; line-height: 1.75; }
+  .made-heading { display: grid; gap: 0; align-items: start; margin-bottom: clamp(3rem, 6vw, 5rem); }
   .product-stack { display: grid; gap: clamp(2.5rem, 6vw, 6rem); }
-  .note-grid { display: grid; grid-template-columns: 0.5fr 1.1fr 0.65fr; gap: clamp(2rem, 6vw, 7rem); align-items: start; }
-  .note-grid h2 { margin: 0; font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw, 6rem); font-weight: 550; letter-spacing: -0.07em; line-height: 0.95; }
-  .note-grid > div { color: var(--muted); font-size: 0.94rem; line-height: 1.8; }
-  .note-grid > div p + p { margin-top: 1.5rem; }
-
-  @media (max-width: 1100px) {
-    .made-heading { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 850px) {
-    .note-grid { grid-template-columns: 1fr; }
-  }
+  .products-next { margin: clamp(2.5rem, 5vw, 4rem) auto 0; color: var(--muted); font-size: 1rem; line-height: 1.7; }
 </style>

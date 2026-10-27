@@ -5,7 +5,7 @@ const capabilities = [
   {
     title: 'Full-stack application development',
     body: 'Modern web applications designed as coherent systems — from domain logic and data flows to the final interface.',
-    tags: ['C# / .NET', 'React', 'TypeScript'],
+    tags: ['C# / .NET', 'Node.js', 'React', 'TypeScript'],
   },
   {
     title: 'Backend & API engineering',
@@ -20,7 +20,7 @@ const capabilities = [
   {
     title: 'Database design & integration',
     body: 'Data models, queries and integrations shaped for correctness, performance and the way the software will actually be used.',
-    tags: ['PostgreSQL', 'Data modelling', 'Performance'],
+    tags: ['PostgreSQL', 'MS SQL', 'Data modelling', 'Performance'],
   },
   {
     title: 'Cloud & deployment',
@@ -28,10 +28,19 @@ const capabilities = [
     tags: ['CI/CD', 'Cloud', 'Infrastructure'],
   },
   {
-    title: 'Modernisation & problem-solving',
-    body: 'Untangling difficult systems, replacing fragile paths and finding a measured route from where the software is to where it needs to be.',
-    tags: ['Legacy systems', 'Refactoring', 'Diagnosis'],
+    title: 'Legacy migration',
+    body: 'Migrating legacy products onto a clearer foundation, and improving how people use them by rethinking the whole path.',
+    tags: ['Legacy systems', 'Migration', 'Usability'],
   },
+];
+
+const clients = [
+  { name: 'UKSBS', logo: '/assets/clients/uksbs.svg' },
+  { name: 'Dynamic Planner', logo: '/assets/clients/dynamic-planner.svg' },
+  { name: 'Nationwide Building Society', logo: '/assets/clients/nationwide-building-society.png' },
+  { name: 'Civica', logo: '/assets/clients/civica.svg' },
+  { name: 'TM Group', logo: '/assets/clients/tm-group.png' },
+  { name: 'Mentor Digital', logo: '/assets/clients/mentor-digital.png' },
 ];
 ---
 
@@ -39,33 +48,9 @@ const capabilities = [
   <section class="doing section">
     <div class="shell">
       <div class="doing-heading reveal">
-        <p class="eyebrow"><span>Services</span> / Two sides, one studio</p>
-        <h2 class="display-title">Built for others.<br /><em>Built from within.</em></h2>
-      </div>
-      <div class="doing-list">
-        <a class="doing-row reveal" href="#capabilities">
-          <span class="doing-number">01</span>
-          <h3>Software<br />Engineering</h3>
-          <p>Designing and developing reliable applications, from backend systems to polished web experiences.</p>
-          <span class="doing-arrow"><ArrowIcon /></span>
-        </a>
-        <a class="doing-row reveal" href="#products" data-delay="1">
-          <span class="doing-number">02</span>
-          <h3>Independent<br />Products</h3>
-          <p>Creating original digital tools, applications and interactive experiences that solve practical problems.</p>
-          <span class="doing-arrow"><ArrowIcon /></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="services-intro section-dark">
-    <div class="shell services-intro__grid">
-      <p class="eyebrow light"><span>The approach</span> / Useful from day one</p>
-      <h2 class="reveal">Clarity before complexity.<br />Care all the way through.</h2>
-      <div class="intro-copy reveal" data-delay="1">
-        <p>Good software work starts by understanding the actual problem — not by reaching for the largest process or newest tool.</p>
-        <p>Bake Code is founder-led and deliberately focused. You get direct technical thinking, honest trade-offs and software made to last.</p>
+        <p class="eyebrow"><span>For clients</span></p>
+        <h2 class="section-title">Services</h2>
+        <p class="section-lede">Software engineering for other teams: applications, APIs, architecture and the systems around them.</p>
       </div>
     </div>
   </section>
@@ -73,8 +58,8 @@ const capabilities = [
   <section id="capabilities" class="capabilities section anchor">
     <div class="shell">
       <div class="capabilities-heading reveal">
-        <p class="eyebrow"><span>Capabilities</span> / Across the stack</p>
-        <h2>Where Bake Code can help.</h2>
+        <p class="eyebrow"><span>Consulting</span></p>
+        <h2>Where Bake Code can help</h2>
       </div>
       <div class="capability-list">
         {capabilities.map((capability, index) => (
@@ -83,92 +68,237 @@ const capabilities = [
             <h3>{capability.title}</h3>
             <p>{capability.body}</p>
             <div class="tags">{capability.tags.map((tag) => <span>{tag}</span>)}</div>
-            <i class="capability-arrow" aria-hidden="true"><ArrowIcon /></i>
           </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="working section-orange">
-    <div class="shell working-grid">
-      <p class="eyebrow"><span>Working together</span> / Lean by design</p>
-      <h2 class="reveal">Close to the problem.<br />Close to the code.</h2>
-      <div class="working-steps reveal" data-delay="1">
-        <div><span>01</span><strong>Understand</strong><p>Start with the problem, constraints and what a good outcome actually means.</p></div>
-        <div><span>02</span><strong>Shape</strong><p>Choose an approach that is robust, proportionate and easy to explain.</p></div>
-        <div><span>03</span><strong>Build</strong><p>Work in useful increments, keeping quality and maintainability visible throughout.</p></div>
+  <section id="clients" class="clients section" aria-roledescription="carousel" aria-labelledby="clients-title">
+    <div class="shell">
+      <div class="clients-heading reveal">
+        <p class="eyebrow"><span>Experience</span></p>
+        <div class="clients-heading__bar">
+          <h2 id="clients-title">Clients</h2>
+          <div class="clients-nav">
+            <button type="button" class="clients-nav__btn" data-clients="prev" aria-label="Previous clients">
+              <span class="clients-nav__icon clients-nav__icon--prev"><ArrowIcon /></span>
+            </button>
+            <button type="button" class="clients-nav__btn" data-clients="next" aria-label="Next clients">
+              <span class="clients-nav__icon"><ArrowIcon /></span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
+    <ul class="clients-track">
+      {clients.map((client) => (
+        <li class="client-card">
+          <div class="client-logo">
+            <img src={client.logo} alt="" />
+          </div>
+          <div class="client-meta">
+            <p class="client-name">{client.name}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
   </section>
 </div>
 
 <style>
   .anchor { scroll-margin-top: calc(var(--header-height) + 1rem); }
 
-  .doing { border-top: 1px solid var(--line); }
-  .doing-heading { display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 3rem; align-items: start; margin-bottom: clamp(4rem, 9vw, 8rem); }
-  .doing-heading h2 em { color: var(--orange); font-style: normal; }
-  .doing-list { border-top: 1px solid var(--ink); }
-  .doing-row { display: grid; grid-template-columns: 0.25fr 0.85fr 1fr auto; gap: clamp(1rem, 4vw, 4rem); align-items: center; padding-block: clamp(2rem, 4vw, 3.6rem); border-bottom: 1px solid var(--line); color: var(--ink); transition: padding 280ms var(--ease), background 220ms ease; }
-  .doing-row:hover { padding-inline: 1.3rem; background: var(--paper); }
-  .doing-number { color: var(--orange); font-size: 0.66rem; font-weight: 750; letter-spacing: 0.1em; }
-  .doing-row h3 { margin: 0; font-family: var(--font-display); font-size: clamp(1.7rem, 3.2vw, 3.4rem); font-weight: 570; letter-spacing: -0.055em; line-height: 0.95; }
-  .doing-row p { max-width: 34rem; margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
-  .doing-arrow { display: grid; width: 3.25rem; aspect-ratio: 1; place-items: center; border: 1px solid var(--line); border-radius: 50%; font-size: 1.2rem; transition: background 180ms ease, transform 220ms var(--ease); }
-  .doing-row:hover .doing-arrow { background: var(--orange); transform: rotate(-8deg); }
-
-  .services-intro { padding-block: clamp(5rem, 10vw, 10rem); }
-  .services-intro__grid { display: grid; grid-template-columns: 0.5fr 1.25fr 0.58fr; gap: clamp(2rem, 5vw, 6rem); align-items: start; }
-  .services-intro h2 { margin: 0; font-family: var(--font-display); font-size: clamp(3rem, 6vw, 6.5rem); font-weight: 530; letter-spacing: -0.075em; line-height: 0.94; }
-  .intro-copy { color: var(--stone-light); font-size: 0.94rem; line-height: 1.8; }
-  .intro-copy p + p { margin-top: 1.5rem; }
+  .doing { padding-top: clamp(3.5rem, 7vw, 6rem); padding-bottom: 0; }
+  .capabilities.section { padding-top: clamp(2.25rem, 4vw, 3.5rem); }
+  .doing-heading { display: grid; gap: 0; align-items: start; }
   .capabilities-heading { display: grid; grid-template-columns: 0.5fr 1.8fr; gap: 3rem; align-items: end; margin-bottom: clamp(4rem, 8vw, 7rem); }
-  .capabilities-heading h2 { margin: 0; font-family: var(--font-display); font-size: clamp(3rem, 6.5vw, 7rem); font-weight: 550; letter-spacing: -0.075em; line-height: 0.94; }
+  .capabilities-heading h2 { margin: 0; font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.8rem); font-weight: 550; letter-spacing: -0.045em; line-height: 1.05; }
   .capability-list { border-top: 1px solid var(--ink); }
-  .capability { position: relative; display: grid; grid-template-columns: 0.22fr 0.9fr 1fr 0.7fr auto; gap: clamp(1rem, 3vw, 3rem); align-items: center; padding-block: clamp(2rem, 3.5vw, 3.2rem); border-bottom: 1px solid var(--line); }
+  .capability { position: relative; display: grid; grid-template-columns: 0.22fr 0.9fr 1fr 0.7fr; gap: clamp(1rem, 3vw, 3rem); align-items: center; padding-block: clamp(2rem, 3.5vw, 3.2rem); border-bottom: 1px solid var(--line); }
   .capability-number { color: var(--orange); font-size: 0.62rem; font-weight: 750; }
   .capability h3 { margin: 0; font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 2.7rem); font-weight: 560; letter-spacing: -0.05em; line-height: 1; }
   .capability > p { margin: 0; color: var(--muted); font-size: 0.84rem; line-height: 1.7; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tags span { padding: 0.38rem 0.58rem; border: 1px solid var(--line); border-radius: 2rem; color: var(--muted); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
-  .capability-arrow { display: grid; width: 2.8rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--ink); color: var(--cream); font-style: normal; transition: transform 200ms var(--ease), background 180ms ease; }
-  .capability:hover .capability-arrow { background: var(--orange); color: var(--ink); transform: rotate(-8deg); }
-  .working { padding-block: clamp(5rem, 10vw, 10rem); }
-  .working-grid > h2 { max-width: 13ch; margin: clamp(3rem, 7vw, 6rem) 0; font-family: var(--font-display); font-size: clamp(3rem, 7vw, 7.5rem); font-weight: 570; letter-spacing: -0.08em; line-height: 0.88; }
-  .working-steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); }
-  .working-steps > div { min-height: 16rem; padding: 1.5rem; border-right: 1px solid rgb(23 25 28 / 0.35); }
-  .working-steps > div:last-child { border: 0; }
-  .working-steps span { display: block; margin-bottom: 3.5rem; font-size: 0.62rem; font-weight: 780; }
-  .working-steps strong { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; letter-spacing: -0.04em; }
-  .working-steps p { max-width: 22rem; margin: 0.8rem 0 0; font-size: 0.84rem; line-height: 1.7; }
 
-  @media (max-width: 1100px) {
-    .doing-heading { grid-template-columns: 1fr; }
-  }
+  .clients.section { padding-top: clamp(3.5rem, 6vw, 5.5rem); padding-bottom: clamp(4.25rem, 8vw, 7rem); border-top: 1px solid var(--line); }
+  .clients-heading { margin-bottom: clamp(1.75rem, 3.5vw, 2.75rem); }
+  .clients-heading__bar { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; }
+  .clients-heading h2 { margin: 0.35rem 0 0; font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 4.25rem); font-weight: 550; letter-spacing: -0.05em; line-height: 1.02; }
+  .clients-nav { display: flex; gap: 0.6rem; margin-bottom: 0.45rem; }
+  .clients-nav__btn { display: grid; width: 3.25rem; aspect-ratio: 1; place-items: center; border: 1px solid var(--ink); border-radius: 50%; background: var(--paper); color: var(--ink); font-size: 1.15rem; cursor: pointer; transition: background 180ms ease; }
+  .clients-nav__btn:hover { background: var(--orange); }
+  .clients-nav__icon { display: grid; transition: transform 220ms var(--ease); }
+  .clients-nav__icon--prev { transform: scaleX(-1); }
+  .clients-nav__btn:hover .clients-nav__icon { transform: scale(1.22); }
+  .clients-nav__btn:hover .clients-nav__icon--prev { transform: scaleX(-1) scale(1.22); }
+  .clients-track { --track-pad: max(var(--gutter), calc((100% - var(--shell)) / 2 + var(--gutter))); display: flex; gap: 1.15rem; margin: 0; padding: 0.7rem var(--track-pad) 1.6rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--track-pad); overscroll-behavior-x: contain; list-style: none; scrollbar-width: none; }
+  .clients-track::-webkit-scrollbar { display: none; }
+  .client-card { position: relative; display: flex; flex: 0 0 clamp(16.25rem, 26vw, 20rem); flex-direction: column; scroll-snap-align: start; overflow: hidden; border: 1px solid var(--line); background: var(--paper); transition: transform 280ms var(--ease), border-color 180ms ease, box-shadow 280ms var(--ease); }
+  .client-card::before { content: ""; position: absolute; z-index: 1; top: 0; right: 0; left: 0; height: 3px; background: var(--orange); transform: scaleX(0); transform-origin: left center; transition: transform 320ms var(--ease); }
+  .client-card:hover { border-color: rgb(23 25 28 / 0.38); box-shadow: 0 1.15rem 2.4rem rgb(23 25 28 / 0.07); transform: translateY(-0.35rem); }
+  .client-card:hover::before { transform: scaleX(1); }
+  .client-logo { display: flex; align-items: center; justify-content: center; height: 8.75rem; margin: 0.55rem 0.55rem 0; padding: 1.2rem 1.25rem; overflow: hidden; background: var(--cream); }
+  .client-logo img { width: 100%; height: 5.5rem; object-fit: contain; object-position: center; }
+  .client-meta { display: flex; align-items: center; min-height: 4.6rem; padding: 0.95rem 1.15rem 1.05rem; }
+  .client-name { margin: 0; font-family: var(--font-display); font-size: 1.2rem; font-weight: 550; letter-spacing: -0.04em; line-height: 1.15; text-wrap: balance; }
 
   @media (max-width: 900px) {
-    .services-intro__grid, .capabilities-heading { grid-template-columns: 1fr; }
-    .capability { grid-template-columns: auto 1fr auto; }
-    .capability > p, .capability .tags { grid-column: 2 / -1; }
-    .capability-arrow { grid-column: 3; grid-row: 1; }
-  }
-
-  @media (max-width: 760px) {
-    .doing-row { grid-template-columns: auto 1fr auto; }
-    .doing-row p { grid-column: 2 / -1; }
-    .doing-arrow { grid-column: 3; grid-row: 1; }
+    .capabilities-heading { grid-template-columns: 1fr; }
+    .capability { grid-template-columns: auto 1fr; }
+    .capability > p, .capability .tags { grid-column: 2; }
   }
 
   @media (max-width: 650px) {
-    .working-steps { grid-template-columns: 1fr; }
-    .working-steps > div { min-height: 0; padding-inline: 0; border-right: 0; border-bottom: 1px solid rgb(23 25 28 / 0.35); }
-    .working-steps > div:last-child { border-bottom: 0; }
-    .working-steps span { margin-bottom: 2rem; }
-  }
-
-  @media (max-width: 460px) {
-    .doing-row { gap: 1rem; }
-    .doing-row h3 { font-size: 1.8rem; }
+    .clients-heading__bar { align-items: center; }
+    .clients-nav { margin-bottom: 0; }
+    .client-card { flex-basis: min(78vw, 19rem); }
+    .client-logo { height: 7.5rem; padding: 1rem 1.05rem; }
   }
 </style>
+
+<script>
+  const root = document.querySelector<HTMLElement>('#clients');
+  const track = root?.querySelector<HTMLElement>('.clients-track');
+  const prev = root?.querySelector<HTMLButtonElement>('[data-clients="prev"]');
+  const next = root?.querySelector<HTMLButtonElement>('[data-clients="next"]');
+
+  if (root && track && prev && next) {
+    const count = track.querySelectorAll('.client-card').length;
+
+    for (const card of [...track.querySelectorAll<HTMLElement>('.client-card')]) {
+      const clone = card.cloneNode(true) as HTMLElement;
+      clone.setAttribute('aria-hidden', 'true');
+      track.append(clone);
+    }
+
+    const cards = () => [...track.querySelectorAll<HTMLElement>('.client-card')];
+    const pad = () => parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const setWidth = () => {
+      const items = cards();
+      return items.length > count ? items[count].offsetLeft - items[0].offsetLeft : 0;
+    };
+
+    const destination = (index: number) => Math.max(0, cards()[index].offsetLeft - pad());
+
+    const nearestIndex = () => cards().reduce((best, card, index) => {
+      const distance = Math.abs(card.offsetLeft - (track.scrollLeft + pad()));
+      return distance < best.distance ? { index, distance } : best;
+    }, { index: 0, distance: Infinity }).index;
+
+    const normalize = () => {
+      const width = setWidth();
+      if (width > 0 && track.scrollLeft >= width - 1) track.scrollLeft -= width;
+    };
+
+    let frame = 0;
+    let animating = false;
+
+    const animateTo = (left: number) => {
+      cancelAnimationFrame(frame);
+      const start = track.scrollLeft;
+      const change = left - start;
+      if (Math.abs(change) < 1 || motion.matches) {
+        track.scrollLeft = left;
+        animating = false;
+        track.style.scrollSnapType = '';
+        normalize();
+        return;
+      }
+
+      animating = true;
+      track.style.scrollSnapType = 'none';
+      const started = performance.now();
+
+      const step = (now: number) => {
+        const progress = Math.min(1, (now - started) / 460);
+        const eased = 1 - (1 - progress) ** 3;
+        track.scrollLeft = start + change * eased;
+        if (progress < 1) {
+          frame = requestAnimationFrame(step);
+          return;
+        }
+        track.scrollLeft = left;
+        animating = false;
+        track.style.scrollSnapType = '';
+        normalize();
+      };
+
+      frame = requestAnimationFrame(step);
+    };
+
+    const go = (delta: number) => {
+      const items = cards();
+      const width = setWidth();
+      let from = nearestIndex();
+
+      if (delta < 0 && from === 0) {
+        track.scrollLeft += width;
+        from = count;
+      }
+
+      let target = from + delta;
+      if (target >= items.length) {
+        track.scrollLeft -= width;
+        from -= count;
+        target = from + delta;
+      }
+
+      const card = items[target];
+      if (!card) return;
+      animateTo(destination(target));
+    };
+
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
+    track.addEventListener('pointerdown', () => {
+      cancelAnimationFrame(frame);
+      animating = false;
+      track.style.scrollSnapType = '';
+    });
+
+    if ('onscrollend' in window) {
+      track.addEventListener('scrollend', () => {
+        if (!animating) normalize();
+      });
+    }
+
+    let timer = 0;
+    let paused = false;
+    let inView = false;
+
+    const arm = () => {
+      window.clearInterval(timer);
+      if (!inView || paused || motion.matches || document.hidden) return;
+      timer = window.setInterval(() => go(1), 4800);
+    };
+
+    const view = new IntersectionObserver(([entry]) => {
+      inView = Boolean(entry?.isIntersecting);
+      arm();
+    }, { threshold: 0.35 });
+
+    view.observe(root);
+    root.addEventListener('mouseenter', () => { paused = true; arm(); });
+    root.addEventListener('mouseleave', () => { paused = false; arm(); });
+    root.addEventListener('focusin', () => { paused = true; arm(); });
+    root.addEventListener('focusout', (event) => {
+      if (!root.contains(event.relatedTarget as Node | null)) {
+        paused = false;
+        arm();
+      }
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(frame);
+        animating = false;
+        track.style.scrollSnapType = '';
+        normalize();
+      }
+      arm();
+    });
+    motion.addEventListener('change', arm);
+  }
+</script>

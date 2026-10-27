@@ -1,17 +1,17 @@
 ---
+import ArrowIcon from '../components/ArrowIcon.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactCTA from '../components/ContactCTA.astro';
+import ContactSection from '../components/ContactSection.astro';
 import ProductsSection from '../components/ProductsSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
-import { expertise } from '../data/site';
 ---
 
 <BaseLayout
   title="Bake Code"
-  description="Bake Code Ltd is a software company offering IT consulting and building independent products."
+  description="Bake Code Ltd is a software company offering software engineering and building independent products."
 >
   <section class="hero shell">
-    <h1>Bake Code is a software company offering <em>IT consulting</em> and building <em>independent products</em>.</h1>
+    <h1>Bake Code is a software company offering <em>software engineering</em> and building <em>independent products</em>.</h1>
     <figure class="hero-mascot">
       <img
         src="/assets/mascot.png"
@@ -28,7 +28,7 @@ import { expertise } from '../data/site';
 
     <div class="hero-story">
       <div class="hero-bio">
-        <p>Hi, I’m Jemin. I’ve been developing software for around two decades, working with small to large companies across finance, banking, property data, fleet management, and healthcare. You ccould explore more about it in the <a href="#services">Service section</a>.</p>
+        <p>Hi, I’m Jemin. I’ve been developing software for around two decades, working with small to large companies across finance, banking, property data, fleet management, and healthcare. You can read more about this work in the <a href="#services">Services section</a>.</p>
         <p>I’ve always loved tinkering with technology, and over the years I’ve built several products to solve problems I’ve run into myself. Here are a few examples:</p>
         <ul class="hero-examples">
           <li>
@@ -44,8 +44,31 @@ import { expertise } from '../data/site';
             To help my child prepare for competitive exams, I built a quiz app that lets me load questions from any source for practice tests. It highlights their weak areas so they know exactly what to work on next.
           </li>
         </ul>
-        <p>I’ve recently made some of the apps public so others can benefit too. You can browse them in the <a href="#products">Products section</a>.</p>
-        <p>Over the past few years I’ve been exploring AI. It has dramatically sped up how I build, and it also helps me research, intutive designing, DevOps and most importantly understand marketing, which is completely new territory for me.</p>
+        <p>Those three stayed personal. The public apps are KeepMyLinks and Fit — you can browse them in the <a href="#products">Products section</a>.</p>
+        <p>Over the past few years I’ve been exploring AI. It has dramatically sped up how I build, and it also helps me with research, design, DevOps and — most importantly — marketing, which is completely new territory for me.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="paths section">
+    <div class="shell">
+      <div class="paths-heading reveal">
+        <p class="eyebrow"><span>What Bake Code does</span></p>
+        <h2 class="section-title">Two kinds of work</h2>
+      </div>
+      <div class="path-cards">
+        <a class="path-card reveal" href="#services">
+          <p class="path-card__label">For clients</p>
+          <h3>Software engineering</h3>
+          <p>Client applications, APIs and architecture.</p>
+          <span class="path-card__link">See services <ArrowIcon /></span>
+        </a>
+        <a class="path-card path-card--ink reveal" href="#products" data-delay="1">
+          <p class="path-card__label">Built in-house</p>
+          <h3>Independent products</h3>
+          <p>Apps designed and run in-house.</p>
+          <span class="path-card__link">See products <ArrowIcon /></span>
+        </a>
       </div>
     </div>
   </section>
@@ -53,34 +76,7 @@ import { expertise } from '../data/site';
   <ServicesSection />
   <ProductsSection />
 
-  <section class="philosophy section-dark">
-    <div class="shell philosophy-grid">
-      <p class="eyebrow light"><span>Our philosophy</span> / The working standard</p>
-      <div class="statement reveal">
-        <p>Thoughtfully engineered.</p>
-        <p><em>Independently built.</em></p>
-      </div>
-      <p class="philosophy-copy reveal" data-delay="1">
-        We believe the best software balances technical excellence with simplicity, creativity and a clear purpose.
-      </p>
-      <div class="philosophy-symbol" aria-hidden="true"><span>{`{`}</span><i></i><span>{`}`}</span></div>
-    </div>
-  </section>
-
-  <section class="expertise section">
-    <div class="shell expertise-heading reveal">
-      <p class="eyebrow"><span>Technology & expertise</span> / Working materials</p>
-      <h2>Tools are chosen for the work,<br />not the other way around.</h2>
-      <p>Deep technical capability across the stack, applied with practical judgement and a bias towards clear, maintainable systems.</p>
-    </div>
-    <div class="shell expertise-index reveal" data-delay="1">
-      {expertise.map((item, index) => (
-        <div class="expertise-item"><span>{String(index + 1).padStart(2, '0')}</span><strong>{item}</strong><i aria-hidden="true">↗</i></div>
-      ))}
-    </div>
-  </section>
-
-  <ContactCTA />
+  <ContactSection />
 </BaseLayout>
 
 <style>
@@ -106,29 +102,19 @@ import { expertise } from '../data/site';
   .hero-examples li:last-child { margin-bottom: 0; }
   .hero-examples strong { color: var(--ink); font-weight: 750; }
 
-  .philosophy { overflow: hidden; padding-block: clamp(6rem, 12vw, 12rem); }
-  .philosophy-grid { position: relative; }
-  .statement { position: relative; z-index: 2; margin-top: clamp(5rem, 12vw, 10rem); font-family: var(--font-display); font-size: clamp(3.4rem, 9vw, 10rem); font-weight: 520; letter-spacing: -0.085em; line-height: 0.82; }
-  .statement p { margin: 0; }
-  .statement p:last-child { margin-left: clamp(1.5rem, 10vw, 11rem); }
-  .statement em { color: var(--orange); font-style: normal; }
-  .philosophy-copy { position: relative; z-index: 2; max-width: 36rem; margin: clamp(4rem, 8vw, 7rem) 0 0 auto; color: var(--stone-light); font-size: clamp(1.05rem, 1.7vw, 1.35rem); line-height: 1.65; }
-  .philosophy-symbol { position: absolute; z-index: 1; top: 4rem; right: -4%; display: flex; align-items: center; gap: 1rem; color: rgb(247 245 240 / 0.05); font-family: var(--font-display); font-size: clamp(12rem, 34vw, 32rem); font-weight: 300; line-height: 0.7; transform: rotate(-8deg); }
-  .philosophy-symbol i { width: 0.2em; aspect-ratio: 1; background: currentColor; }
-
-  .expertise-heading { display: grid; grid-template-columns: 0.6fr 1.15fr 0.7fr; gap: clamp(2rem, 5vw, 6rem); align-items: start; margin-bottom: clamp(4rem, 7vw, 6rem); }
-  .expertise-heading h2 { margin: 0; font-family: var(--font-display); font-size: clamp(2.4rem, 4.8vw, 5.2rem); font-weight: 560; letter-spacing: -0.065em; line-height: 0.98; }
-  .expertise-heading > p:last-child { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.75; }
-  .expertise-index { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); }
-  .expertise-item { display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; min-height: 5.6rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--line); }
-  .expertise-item:nth-child(odd) { border-right: 1px solid var(--line); }
-  .expertise-item span { color: var(--orange); font-size: 0.58rem; font-weight: 800; }
-  .expertise-item strong { font-family: var(--font-display); font-size: clamp(1.2rem, 2vw, 1.65rem); font-weight: 540; letter-spacing: -0.035em; }
-  .expertise-item i { color: var(--stone); font-style: normal; }
-
-  @media (max-width: 1100px) {
-    .expertise-heading { grid-template-columns: 1fr; }
-  }
+  .paths { border-top: 1px solid var(--line); }
+  .paths-heading { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+  .path-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.15rem; }
+  .path-card { display: flex; min-height: 18rem; flex-direction: column; padding: clamp(1.75rem, 3vw, 2.75rem); border: 1px solid var(--line); background: var(--paper); color: var(--ink); transition: transform 280ms var(--ease), box-shadow 280ms var(--ease); }
+  .path-card--ink { border-color: var(--ink); background: var(--ink); color: var(--cream); }
+  .path-card__label { margin: 0; color: var(--orange); font-size: 0.66rem; font-weight: 750; letter-spacing: 0.13em; text-transform: uppercase; }
+  .path-card h3 { margin: 1.25rem 0 0.85rem; font-family: var(--font-display); font-size: clamp(1.8rem, 2.6vw, 2.6rem); font-weight: 560; letter-spacing: -0.045em; line-height: 1.05; }
+  .path-card p:not(.path-card__label) { max-width: 28rem; margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.7; }
+  .path-card--ink p:not(.path-card__label) { color: var(--stone-light); }
+  .path-card__link { display: inline-flex; align-items: center; gap: 0.6rem; margin-top: auto; padding-top: 2rem; font-size: 0.7rem; font-weight: 760; letter-spacing: 0.07em; text-transform: uppercase; }
+  .path-card__link :global(svg) { transition: transform 180ms var(--ease); }
+  .path-card:hover, .js .path-card.reveal.in-view:hover { box-shadow: 0 1.15rem 2.4rem rgb(23 25 28 / 0.08); transform: translateY(-0.35rem); }
+  .path-card:hover .path-card__link :global(svg) { transform: translateX(0.25rem); }
 
   @keyframes mascot-arrive { from { opacity: 0; transform: translateY(1.2rem); } to { opacity: 1; transform: none; } }
   @keyframes mascot-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -148,10 +134,7 @@ import { expertise } from '../data/site';
   }
 
   @media (max-width: 760px) {
-    .statement p:last-child { margin-top: 1rem; margin-left: 0; }
-    .philosophy-copy { margin-left: 0; }
-    .expertise-index { grid-template-columns: 1fr; }
-    .expertise-item:nth-child(odd) { border-right: 0; }
+    .path-cards { grid-template-columns: 1fr; }
   }
 
 </style>
