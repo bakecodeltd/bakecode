@@ -13,9 +13,8 @@ export const site = {
 } as const;
 
 export const navigation = [
-  { label: 'Products', href: '/products' },
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
+  { label: 'Products', href: '/#products' },
+  { label: 'Services', href: '/#services' },
   { label: 'Contact', href: '/contact' },
 ] as const;
 

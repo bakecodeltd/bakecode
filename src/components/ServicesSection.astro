@@ -1,8 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHero from '../components/PageHero.astro';
-import ArrowIcon from '../components/ArrowIcon.astro';
-import ContactCTA from '../components/ContactCTA.astro';
+import ArrowIcon from './ArrowIcon.astro';
 
 const capabilities = [
   {
@@ -38,16 +35,29 @@ const capabilities = [
 ];
 ---
 
-<BaseLayout
-  title="Software Engineering Services"
-  description="Software engineering and IT consultancy from Bake Code: full-stack applications, APIs, architecture, PostgreSQL, cloud deployment and modernisation."
->
-  <PageHero
-    eyebrow="Services / Engineering practice"
-    title="Serious engineering.<br /><em>No theatre.</em>"
-    intro="Bake Code helps organisations design, build and improve software with focused senior engineering — from a difficult technical problem to a complete modern application."
-    index="02"
-  />
+<div id="services" class="anchor">
+  <section class="doing section">
+    <div class="shell">
+      <div class="doing-heading reveal">
+        <p class="eyebrow"><span>Services</span> / Two sides, one studio</p>
+        <h2 class="display-title">Built for others.<br /><em>Built from within.</em></h2>
+      </div>
+      <div class="doing-list">
+        <a class="doing-row reveal" href="#capabilities">
+          <span class="doing-number">01</span>
+          <h3>Software<br />Engineering</h3>
+          <p>Designing and developing reliable applications, from backend systems to polished web experiences.</p>
+          <span class="doing-arrow"><ArrowIcon /></span>
+        </a>
+        <a class="doing-row reveal" href="#products" data-delay="1">
+          <span class="doing-number">02</span>
+          <h3>Independent<br />Products</h3>
+          <p>Creating original digital tools, applications and interactive experiences that solve practical problems.</p>
+          <span class="doing-arrow"><ArrowIcon /></span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <section class="services-intro section-dark">
     <div class="shell services-intro__grid">
@@ -60,7 +70,7 @@ const capabilities = [
     </div>
   </section>
 
-  <section class="capabilities section">
+  <section id="capabilities" class="capabilities section anchor">
     <div class="shell">
       <div class="capabilities-heading reveal">
         <p class="eyebrow"><span>Capabilities</span> / Across the stack</p>
@@ -91,11 +101,23 @@ const capabilities = [
       </div>
     </div>
   </section>
-
-  <ContactCTA />
-</BaseLayout>
+</div>
 
 <style>
+  .anchor { scroll-margin-top: calc(var(--header-height) + 1rem); }
+
+  .doing { border-top: 1px solid var(--line); }
+  .doing-heading { display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 3rem; align-items: start; margin-bottom: clamp(4rem, 9vw, 8rem); }
+  .doing-heading h2 em { color: var(--orange); font-style: normal; }
+  .doing-list { border-top: 1px solid var(--ink); }
+  .doing-row { display: grid; grid-template-columns: 0.25fr 0.85fr 1fr auto; gap: clamp(1rem, 4vw, 4rem); align-items: center; padding-block: clamp(2rem, 4vw, 3.6rem); border-bottom: 1px solid var(--line); color: var(--ink); transition: padding 280ms var(--ease), background 220ms ease; }
+  .doing-row:hover { padding-inline: 1.3rem; background: var(--paper); }
+  .doing-number { color: var(--orange); font-size: 0.66rem; font-weight: 750; letter-spacing: 0.1em; }
+  .doing-row h3 { margin: 0; font-family: var(--font-display); font-size: clamp(1.7rem, 3.2vw, 3.4rem); font-weight: 570; letter-spacing: -0.055em; line-height: 0.95; }
+  .doing-row p { max-width: 34rem; margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .doing-arrow { display: grid; width: 3.25rem; aspect-ratio: 1; place-items: center; border: 1px solid var(--line); border-radius: 50%; font-size: 1.2rem; transition: background 180ms ease, transform 220ms var(--ease); }
+  .doing-row:hover .doing-arrow { background: var(--orange); transform: rotate(-8deg); }
+
   .services-intro { padding-block: clamp(5rem, 10vw, 10rem); }
   .services-intro__grid { display: grid; grid-template-columns: 0.5fr 1.25fr 0.58fr; gap: clamp(2rem, 5vw, 6rem); align-items: start; }
   .services-intro h2 { margin: 0; font-family: var(--font-display); font-size: clamp(3rem, 6vw, 6.5rem); font-weight: 530; letter-spacing: -0.075em; line-height: 0.94; }
@@ -121,16 +143,32 @@ const capabilities = [
   .working-steps strong { display: block; font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; letter-spacing: -0.04em; }
   .working-steps p { max-width: 22rem; margin: 0.8rem 0 0; font-size: 0.84rem; line-height: 1.7; }
 
+  @media (max-width: 1100px) {
+    .doing-heading { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 900px) {
     .services-intro__grid, .capabilities-heading { grid-template-columns: 1fr; }
     .capability { grid-template-columns: auto 1fr auto; }
     .capability > p, .capability .tags { grid-column: 2 / -1; }
     .capability-arrow { grid-column: 3; grid-row: 1; }
   }
+
+  @media (max-width: 760px) {
+    .doing-row { grid-template-columns: auto 1fr auto; }
+    .doing-row p { grid-column: 2 / -1; }
+    .doing-arrow { grid-column: 3; grid-row: 1; }
+  }
+
   @media (max-width: 650px) {
     .working-steps { grid-template-columns: 1fr; }
     .working-steps > div { min-height: 0; padding-inline: 0; border-right: 0; border-bottom: 1px solid rgb(23 25 28 / 0.35); }
     .working-steps > div:last-child { border-bottom: 0; }
     .working-steps span { margin-bottom: 2rem; }
+  }
+
+  @media (max-width: 460px) {
+    .doing-row { gap: 1rem; }
+    .doing-row h3 { font-size: 1.8rem; }
   }
 </style>

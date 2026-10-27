@@ -25,7 +25,7 @@ The production build is written to `dist/`.
 
 ## Content and configuration
 
-Company-wide values live in `src/data/site.ts`. Products live in `src/data/products.ts`; add another object to the array to extend the product pages without changing their layouts.
+Company-wide values live in `src/data/site.ts`. Products live in `src/data/products.ts`; add another object to the array to show it in the products section on the home page.
 
 A product with a `null` URL is shown without an external link until one is configured.
 

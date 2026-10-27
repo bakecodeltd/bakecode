@@ -12,6 +12,9 @@ const failures = [];
 for (const file of htmlFiles) {
   const html = readFileSync(file, 'utf8');
   const name = relative(dist, file);
+
+  if (html.includes('http-equiv="refresh"') || html.includes("http-equiv='refresh'")) continue;
+
   const h1Count = (html.match(/<h1(?:\s|>)/g) ?? []).length;
 
   if (h1Count !== 1) failures.push(`${name}: expected exactly one h1, found ${h1Count}`);

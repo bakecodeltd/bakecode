@@ -1,0 +1,56 @@
+---
+import ProductFeature from './ProductFeature.astro';
+import { products } from '../data/products';
+---
+
+<div id="products" class="anchor">
+  <section class="made-section">
+    <div class="shell made-heading reveal">
+      <p class="eyebrow"><span>Products</span> / Made at Bake Code</p>
+      <h2 class="display-title">Independent products,<br /><em>thoughtfully built.</em></h2>
+      <p class="products-intro">Independent products are not a side project at Bake Code. They are where practical problems, creative experiments and careful engineering become things people can actually use.</p>
+    </div>
+    <div class="shell product-stack">
+      {products.map((product, index) => (
+        <ProductFeature
+          product={product}
+          number={String(index + 1).padStart(2, '0')}
+          reverse={index % 2 === 1}
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="product-note section">
+    <div class="shell note-grid reveal">
+      <p class="eyebrow"><span>Always making</span> / The next build</p>
+      <h2>Products begin as questions.</h2>
+      <div>
+        <p>Could this task be clearer? Could a daily habit be easier to keep? Could looking after people feel a little simpler?</p>
+        <p>Bake Code explores those questions by designing, building and operating original software — one useful release at a time.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  .anchor { scroll-margin-top: calc(var(--header-height) + 1rem); }
+  .made-section { padding-block: clamp(5rem, 10vw, 10rem); background: var(--paper); }
+  .made-heading { display: grid; grid-template-columns: 0.55fr 1.35fr 0.7fr; gap: 2rem; align-items: end; margin-bottom: clamp(4rem, 8vw, 7rem); }
+  .made-heading h2 { font-size: clamp(3rem, 6.5vw, 7rem); }
+  .made-heading h2 em { color: var(--orange); font-style: normal; }
+  .products-intro { margin: 0; color: var(--muted); font-size: 0.94rem; line-height: 1.75; }
+  .product-stack { display: grid; gap: clamp(2.5rem, 6vw, 6rem); }
+  .note-grid { display: grid; grid-template-columns: 0.5fr 1.1fr 0.65fr; gap: clamp(2rem, 6vw, 7rem); align-items: start; }
+  .note-grid h2 { margin: 0; font-family: var(--font-display); font-size: clamp(2.8rem, 5.5vw, 6rem); font-weight: 550; letter-spacing: -0.07em; line-height: 0.95; }
+  .note-grid > div { color: var(--muted); font-size: 0.94rem; line-height: 1.8; }
+  .note-grid > div p + p { margin-top: 1.5rem; }
+
+  @media (max-width: 1100px) {
+    .made-heading { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 850px) {
+    .note-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArrowIcon from '../components/ArrowIcon.astro';
-import ProductFeature from '../components/ProductFeature.astro';
 import ContactCTA from '../components/ContactCTA.astro';
-import { products } from '../data/products';
+import ProductsSection from '../components/ProductsSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
 import { expertise } from '../data/site';
 ---
 
@@ -22,8 +22,8 @@ import { expertise } from '../data/site';
       <div class="hero-bottom">
         <p>Bake Code is an independent software studio building useful digital products and engineering modern applications.</p>
         <div class="hero-actions">
-          <a class="button" href="/products">Explore our products <ArrowIcon /></a>
-          <a class="button button--ghost" href="/services">What we do</a>
+          <a class="button" href="#products">Explore our products <ArrowIcon /></a>
+          <a class="button button--ghost" href="#services">What we do</a>
         </div>
       </div>
     </div>
@@ -51,46 +51,8 @@ import { expertise } from '../data/site';
     <p class="hero-index">BC / 2026</p>
   </section>
 
-  <section class="doing section">
-    <div class="shell">
-      <div class="doing-heading reveal">
-        <p class="eyebrow"><span>What we do</span> / Two sides, one studio</p>
-        <h2 class="display-title">Built for others.<br /><em>Built from within.</em></h2>
-      </div>
-      <div class="doing-list">
-        <a class="doing-row reveal" href="/services">
-          <span class="doing-number">01</span>
-          <h3>Software<br />Engineering</h3>
-          <p>Designing and developing reliable applications, from backend systems to polished web experiences.</p>
-          <span class="doing-arrow"><ArrowIcon /></span>
-        </a>
-        <a class="doing-row reveal" href="/products" data-delay="1">
-          <span class="doing-number">02</span>
-          <h3>Independent<br />Products</h3>
-          <p>Creating original digital tools, applications and interactive experiences that solve practical problems.</p>
-          <span class="doing-arrow"><ArrowIcon /></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="made-section">
-    <div class="shell made-heading reveal">
-      <p class="eyebrow"><span>Selected products</span> / Made at Bake Code</p>
-      <h2 class="display-title">Independent products,<br /><em>thoughtfully built.</em></h2>
-      <a class="text-link" href="/products">See all products <ArrowIcon /></a>
-    </div>
-    <div class="shell product-stack">
-      {products.map((product, index) => (
-        <ProductFeature
-          product={product}
-          number={String(index + 1).padStart(2, '0')}
-          reverse={index === 1}
-          compact
-        />
-      ))}
-    </div>
-  </section>
+  <ServicesSection />
+  <ProductsSection />
 
   <section class="philosophy section-dark">
     <div class="shell philosophy-grid">
@@ -164,23 +126,6 @@ import { expertise } from '../data/site';
   .output-card i { position: absolute; right: 1rem; bottom: 1rem; font-style: normal; }
   .bench-caption { position: absolute; right: 1rem; bottom: 1rem; writing-mode: vertical-rl; color: var(--stone-light); font-size: 0.45rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
 
-  .doing { border-top: 1px solid var(--line); }
-  .doing-heading { display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 3rem; align-items: start; margin-bottom: clamp(4rem, 9vw, 8rem); }
-  .doing-heading h2 em, .made-heading h2 em { color: var(--orange); font-style: normal; }
-  .doing-list { border-top: 1px solid var(--ink); }
-  .doing-row { display: grid; grid-template-columns: 0.25fr 0.85fr 1fr auto; gap: clamp(1rem, 4vw, 4rem); align-items: center; padding-block: clamp(2rem, 4vw, 3.6rem); border-bottom: 1px solid var(--line); color: var(--ink); transition: padding 280ms var(--ease), background 220ms ease; }
-  .doing-row:hover { padding-inline: 1.3rem; background: var(--paper); }
-  .doing-number { color: var(--orange); font-size: 0.66rem; font-weight: 750; letter-spacing: 0.1em; }
-  .doing-row h3 { margin: 0; font-family: var(--font-display); font-size: clamp(1.7rem, 3.2vw, 3.4rem); font-weight: 570; letter-spacing: -0.055em; line-height: 0.95; }
-  .doing-row p { max-width: 34rem; margin: 0; color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
-  .doing-arrow { display: grid; width: 3.25rem; aspect-ratio: 1; place-items: center; border: 1px solid var(--line); border-radius: 50%; font-size: 1.2rem; transition: background 180ms ease, transform 220ms var(--ease); }
-  .doing-row:hover .doing-arrow { background: var(--orange); transform: rotate(-8deg); }
-
-  .made-section { padding-block: clamp(5rem, 10vw, 10rem); background: var(--paper); }
-  .made-heading { display: grid; grid-template-columns: 0.55fr 1.35fr auto; gap: 2rem; align-items: end; margin-bottom: clamp(4rem, 8vw, 7rem); }
-  .made-heading h2 { font-size: clamp(3rem, 6.5vw, 7rem); }
-  .product-stack { display: grid; gap: clamp(2.5rem, 6vw, 6rem); }
-
   .philosophy { overflow: hidden; padding-block: clamp(6rem, 12vw, 12rem); }
   .philosophy-grid { position: relative; }
   .statement { position: relative; z-index: 2; margin-top: clamp(5rem, 12vw, 10rem); font-family: var(--font-display); font-size: clamp(3.4rem, 9vw, 10rem); font-weight: 520; letter-spacing: -0.085em; line-height: 0.82; }
@@ -205,8 +150,7 @@ import { expertise } from '../data/site';
     .hero { grid-template-columns: 1fr; padding-top: 5rem; }
     .hero-copy { max-width: 64rem; }
     .hero-workbench { width: min(80%, 42rem); margin: 2rem 0 3rem auto; aspect-ratio: 1.05; }
-    .doing-heading, .made-heading, .expertise-heading { grid-template-columns: 1fr; }
-    .made-heading .text-link { justify-self: start; }
+    .expertise-heading { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 760px) {
@@ -217,9 +161,6 @@ import { expertise } from '../data/site';
     .hero-actions { align-items: stretch; }
     .hero-actions .button { flex: 1; }
     .hero-workbench { width: calc(100% - 0.75rem); margin-top: 4rem; aspect-ratio: 0.85; }
-    .doing-row { grid-template-columns: auto 1fr auto; }
-    .doing-row p { grid-column: 2 / -1; }
-    .doing-arrow { grid-column: 3; grid-row: 1; }
     .statement p:last-child { margin-top: 1rem; margin-left: 0; }
     .philosophy-copy { margin-left: 0; }
     .expertise-index { grid-template-columns: 1fr; }
@@ -229,7 +170,5 @@ import { expertise } from '../data/site';
   @media (max-width: 460px) {
     .hero-actions { flex-direction: column; }
     .hero-workbench { min-height: 31rem; }
-    .doing-row { gap: 1rem; }
-    .doing-row h3 { font-size: 1.8rem; }
   }
 </style>

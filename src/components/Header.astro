@@ -12,7 +12,13 @@ const pathname = Astro.url.pathname;
     <nav class="desktop-nav" aria-label="Primary navigation">
       {
         navigation.map((item) => (
-          <a href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>{item.label}</a>
+          <a
+            href={item.href}
+            data-nav={item.href.includes('#') ? 'section' : undefined}
+            aria-current={!item.href.includes('#') && pathname === item.href ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
         ))
       }
     </nav>
@@ -22,7 +28,11 @@ const pathname = Astro.url.pathname;
       <nav aria-label="Mobile navigation">
         {
           navigation.map((item, index) => (
-            <a href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>
+            <a
+              href={item.href}
+              data-nav={item.href.includes('#') ? 'section' : undefined}
+              aria-current={!item.href.includes('#') && pathname === item.href ? 'page' : undefined}
+            >
               <span>{String(index + 1).padStart(2, '0')}</span>{item.label}
             </a>
           ))
@@ -47,7 +57,7 @@ const pathname = Astro.url.pathname;
   .desktop-nav { display: flex; align-items: center; gap: clamp(1.4rem, 3vw, 2.8rem); }
   .desktop-nav a { position: relative; color: var(--ink); font-size: 0.77rem; font-weight: 650; letter-spacing: 0.09em; text-transform: uppercase; }
   .desktop-nav a::after { position: absolute; right: 0; bottom: -0.5rem; left: 0; height: 2px; background: var(--orange); content: ''; transform: scaleX(0); transform-origin: right; transition: transform 220ms var(--ease); }
-  .desktop-nav a:hover::after, .desktop-nav a[aria-current='page']::after { transform: scaleX(1); transform-origin: left; }
+  .desktop-nav a:hover::after, .desktop-nav a[aria-current]::after { transform: scaleX(1); transform-origin: left; }
   .mobile-menu { display: none; }
 
   @media (max-width: 720px) {
@@ -60,5 +70,43 @@ const pathname = Astro.url.pathname;
     .mobile-menu nav { position: fixed; inset: var(--header-height) 0 auto; display: grid; padding: 1.5rem var(--gutter) 2rem; border-bottom: 1px solid var(--line); background: var(--cream); box-shadow: 0 1.5rem 3rem rgb(23 25 28 / 0.12); }
     .mobile-menu nav a { display: flex; align-items: baseline; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); color: var(--ink); font-family: var(--font-display); font-size: 1.65rem; font-weight: 580; letter-spacing: -0.04em; }
     .mobile-menu nav a span { color: var(--orange); font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.08em; }
+    .mobile-menu nav a[aria-current] { color: var(--orange); }
   }
 </style>
+
+<script>
+  const menu = document.querySelector('.mobile-menu');
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => menu.removeAttribute('open'));
+  });
+
+  const sectionLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav="section"]')];
+  const ids = [...new Set(sectionLinks.flatMap((link) => (link.hash ? [link.hash.slice(1)] : [])))];
+  const sections = ids
+    .map((id) => document.getElementById(id))
+    .filter((section): section is HTMLElement => section !== null);
+
+  if (sections.length > 0) {
+    const visible = new Set<string>();
+    const setActive = (id: string | null) => {
+      for (const link of sectionLinks) {
+        const active = id !== null && link.hash === `#${id}`;
+        if (active) link.setAttribute('aria-current', 'location');
+        else if (link.getAttribute('aria-current') === 'location') link.removeAttribute('aria-current');
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target.id);
+          else visible.delete(entry.target.id);
+        }
+        setActive(sections.find((section) => visible.has(section.id))?.id ?? null);
+      },
+      { rootMargin: '-35% 0px -50% 0px', threshold: 0 },
+    );
+
+    for (const section of sections) observer.observe(section);
+  }
+</script>
