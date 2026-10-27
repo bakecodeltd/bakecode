@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ArrowIcon from '../components/ArrowIcon.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import ProductsSection from '../components/ProductsSection.astro';
 import ServicesSection from '../components/ServicesSection.astro';
@@ -9,46 +8,46 @@ import { expertise } from '../data/site';
 
 <BaseLayout
   title="Bake Code"
-  description="Bake Code is an independent UK software studio building useful digital products and engineering modern applications."
+  description="Bake Code Ltd is a software company offering IT consulting and building independent products."
 >
   <section class="hero shell">
-    <div class="hero-copy">
-      <p class="eyebrow hero-eyebrow"><span>Independent software studio</span> / UK</p>
-      <h1>
-        <span class="hero-line">Engineering</span>
-        <span class="hero-line"><em>software.</em></span>
-        <span class="hero-line hero-line--indent">Building products.</span>
-      </h1>
-      <div class="hero-bottom">
-        <p>Bake Code is an independent software studio building useful digital products and engineering modern applications.</p>
-        <div class="hero-actions">
-          <a class="button" href="#products">Explore our products <ArrowIcon /></a>
-          <a class="button button--ghost" href="#services">What we do</a>
-        </div>
+    <h1>Bake Code is a software company offering <em>IT consulting</em> and building <em>independent products</em>.</h1>
+    <figure class="hero-mascot">
+      <img
+        src="/assets/mascot.png"
+        alt="Bake Code mascot in a chef’s hat and orange hoodie, holding a laptop and giving a thumbs up"
+        width="700"
+        height="700"
+      />
+      <span class="hero-mascot__shadow" aria-hidden="true"></span>
+      <span class="hero-mascot__mark hero-mascot__mark--code" aria-hidden="true">{`</>`}</span>
+      <span class="hero-mascot__mark hero-mascot__mark--braces" aria-hidden="true">{`{ }`}</span>
+      <span class="hero-mascot__mark hero-mascot__mark--dash" aria-hidden="true"></span>
+      <span class="hero-mascot__mark hero-mascot__mark--dash hero-mascot__mark--dash-b" aria-hidden="true"></span>
+    </figure>
+
+    <div class="hero-story">
+      <div class="hero-bio">
+        <p>Hi, I’m Jemin. I’ve been developing software for around two decades, working with small to large companies across finance, banking, property data, fleet management, and healthcare. You ccould explore more about it in the <a href="#services">Service section</a>.</p>
+        <p>I’ve always loved tinkering with technology, and over the years I’ve built several products to solve problems I’ve run into myself. Here are a few examples:</p>
+        <ul class="hero-examples">
+          <li>
+            <strong>Food inventory.</strong>
+            We cook in large batches and store it in a chest freezer, labelled with the date. As the freezer filled up, we lost track of what to use first. So I built an app that shows what’s in the freezer and helps us plan meals before anything expires.
+          </li>
+          <li>
+            <strong>Home inventory.</strong>
+            As a DIY enthusiast, I have plenty of tools and household items that tend to go missing. My inventory tracker records exactly where each item lives, down to the room and shelf number.
+          </li>
+          <li>
+            <strong>Quiz app.</strong>
+            To help my child prepare for competitive exams, I built a quiz app that lets me load questions from any source for practice tests. It highlights their weak areas so they know exactly what to work on next.
+          </li>
+        </ul>
+        <p>I’ve recently made some of the apps public so others can benefit too. You can browse them in the <a href="#products">Products section</a>.</p>
+        <p>Over the past few years I’ve been exploring AI. It has dramatically sped up how I build, and it also helps me research, intutive designing, DevOps and most importantly understand marketing, which is completely new territory for me.</p>
       </div>
     </div>
-
-    <div class="hero-workbench" aria-hidden="true">
-      <div class="bench-grid"></div>
-      <div class="bench-label">BUILD / 01</div>
-      <div class="code-panel">
-        <div class="panel-bar"><i></i><i></i><i></i><span>product.ts</span></div>
-        <div class="code-lines">
-          <p><b>const</b> idea = <em>{`{`}</em></p>
-          <p>&nbsp;&nbsp;useful: <span>true</span>,</p>
-          <p>&nbsp;&nbsp;simple: <span>true</span>,</p>
-          <p>&nbsp;&nbsp;crafted: <span>true</span></p>
-          <p><em>{`}`}</em>;</p>
-        </div>
-      </div>
-      <div class="module module-a"><span>01</span><b>&lt;/&gt;</b></div>
-      <div class="module module-b"><span>02</span><b>API</b></div>
-      <div class="module module-c"><span>03</span><b>UI</b></div>
-      <div class="output-card"><span>OUTPUT</span><b>Useful<br />software.</b><i>↗</i></div>
-      <div class="bench-caption">Raw idea → working product</div>
-    </div>
-
-    <p class="hero-index">BC / 2026</p>
   </section>
 
   <ServicesSection />
@@ -85,46 +84,27 @@ import { expertise } from '../data/site';
 </BaseLayout>
 
 <style>
-  .hero { position: relative; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(22rem, 0.72fr); gap: clamp(2rem, 5vw, 6rem); align-items: center; min-height: calc(100svh - var(--header-height)); padding-block: clamp(4rem, 8vh, 7rem); }
-  .hero-copy { position: relative; z-index: 2; }
-  .hero-eyebrow { margin-bottom: clamp(2.5rem, 6vh, 5rem); }
-  h1 { margin: 0; font-family: var(--font-display); font-size: clamp(4rem, 8.2vw, 9.3rem); font-weight: 570; letter-spacing: -0.085em; line-height: 0.79; }
-  .hero-line { display: block; }
-  .hero-line em { color: var(--orange); font-style: normal; }
-  .hero-line--indent { margin-left: clamp(1rem, 5vw, 6rem); font-size: 0.83em; white-space: nowrap; }
-  .hero-bottom { display: grid; grid-template-columns: minmax(16rem, 1fr) auto; gap: 2rem; align-items: end; margin-top: clamp(3rem, 7vh, 5.5rem); }
-  .hero-bottom > p { max-width: 39rem; margin: 0; color: var(--muted); font-size: clamp(1rem, 1.3vw, 1.15rem); line-height: 1.7; }
-  .hero-actions { display: flex; gap: 0.7rem; }
-  .hero-index { position: absolute; right: var(--gutter); bottom: 1.25rem; margin: 0; color: var(--muted); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.12em; }
-
-  .hero-workbench { position: relative; aspect-ratio: 0.82; max-height: 44rem; overflow: hidden; border: 1px solid var(--ink); background: var(--ink-soft); color: var(--cream); box-shadow: 1.1rem 1.1rem 0 var(--orange); transform: rotate(1.2deg); }
-  .bench-grid { position: absolute; inset: 0; background-image: linear-gradient(rgb(247 245 240 / 0.08) 1px, transparent 1px), linear-gradient(90deg, rgb(247 245 240 / 0.08) 1px, transparent 1px); background-size: 12.5% 10%; }
-  .bench-label { position: absolute; top: 1rem; left: 1rem; color: var(--stone-light); font-size: 0.55rem; font-weight: 750; letter-spacing: 0.14em; }
-  .code-panel { position: absolute; top: 10%; right: 7%; left: 7%; height: 39%; border: 1px solid rgb(247 245 240 / 0.24); background: #1b1d20; box-shadow: 0.75rem 0.75rem 0 rgb(0 0 0 / 0.25); transform: rotate(-2deg); }
-  .panel-bar { display: flex; align-items: center; gap: 0.35rem; height: 2rem; padding-inline: 0.7rem; border-bottom: 1px solid rgb(247 245 240 / 0.16); }
-  .panel-bar i { width: 0.38rem; aspect-ratio: 1; border-radius: 50%; background: var(--orange); }
-  .panel-bar i:nth-child(2) { background: var(--yellow); }
-  .panel-bar i:nth-child(3) { background: #75c99e; }
-  .panel-bar span { margin-left: auto; color: var(--stone-light); font-family: monospace; font-size: 0.55rem; }
-  .code-lines { padding: 1rem 1.2rem; color: #e6e0d6; font-family: 'SFMono-Regular', Consolas, monospace; font-size: clamp(0.62rem, 1vw, 0.9rem); line-height: 1.35; }
-  .code-lines p { margin: 0 0 0.32rem; }
-  .code-lines b { color: #caa8ff; font-weight: 500; }
-  .code-lines em { color: var(--orange); font-style: normal; }
-  .code-lines span { color: #75d7b0; }
-  .module { position: absolute; z-index: 2; display: flex; flex-direction: column; justify-content: space-between; width: 21%; aspect-ratio: 1; padding: 0.7rem; border: 1px solid var(--ink); color: var(--ink); box-shadow: 0.35rem 0.35rem 0 rgb(23 25 28 / 0.5); transition: transform 400ms var(--ease); }
-  .module span { font-size: 0.5rem; font-weight: 800; }
-  .module b { font-family: var(--font-display); font-size: clamp(0.85rem, 1.5vw, 1.3rem); align-self: flex-end; }
-  .module-a { top: 53%; left: 8%; background: var(--yellow); transform: rotate(-7deg); }
-  .module-b { top: 56%; left: 32%; background: #a5d7c3; transform: rotate(4deg); }
-  .module-c { top: 51%; left: 56%; background: #d2b8df; transform: rotate(-2deg); }
-  .hero-workbench:hover .module-a { transform: translateY(-0.4rem) rotate(-10deg); }
-  .hero-workbench:hover .module-b { transform: translateY(0.25rem) rotate(7deg); }
-  .hero-workbench:hover .module-c { transform: translateY(-0.3rem) rotate(-5deg); }
-  .output-card { position: absolute; z-index: 3; right: 7%; bottom: 7%; left: 14%; display: flex; height: 22%; flex-direction: column; padding: 1rem; border: 1px solid var(--ink); background: var(--orange); color: var(--ink); box-shadow: 0.6rem 0.6rem 0 #0e0f10; transform: rotate(2deg); }
-  .output-card > span { font-size: 0.5rem; font-weight: 800; letter-spacing: 0.14em; }
-  .output-card b { margin-top: auto; font-family: var(--font-display); font-size: clamp(1.2rem, 2.7vw, 2.6rem); font-weight: 650; letter-spacing: -0.055em; line-height: 0.86; }
-  .output-card i { position: absolute; right: 1rem; bottom: 1rem; font-style: normal; }
-  .bench-caption { position: absolute; right: 1rem; bottom: 1rem; writing-mode: vertical-rl; color: var(--stone-light); font-size: 0.45rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(14rem, 20rem); grid-template-areas: "title mascot" "story mascot"; column-gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; padding-block: clamp(3.25rem, 7vh, 5.5rem) clamp(3.5rem, 7vh, 5.5rem); }
+  .hero h1 { grid-area: title; max-width: 16em; margin: 0; font-family: var(--font-display); font-size: clamp(1.85rem, 3vw, 2.7rem); font-weight: 560; letter-spacing: -0.04em; line-height: 1.18; }
+  .hero-mascot { --drift: -0.55rem; position: relative; z-index: 0; isolation: isolate; grid-area: mascot; width: min(100%, 20rem); margin: 0; align-self: end; justify-self: end; animation: mascot-arrive 700ms var(--ease) 180ms both; }
+  .hero-mascot img { position: relative; z-index: 1; display: block; width: 100%; height: auto; animation: mascot-float 6s ease-in-out 900ms infinite; }
+  .hero-mascot__shadow { position: absolute; z-index: -1; left: 20%; right: 18%; bottom: 0.6%; height: 0.7rem; border-radius: 50%; background: rgb(23 25 28 / 0.34); filter: blur(6px); transform-origin: center; animation: mascot-shadow 6s ease-in-out 900ms infinite; }
+  .hero-mascot__mark { position: absolute; z-index: 2; display: block; color: var(--orange); font-family: var(--font-display); font-size: 0.95rem; font-weight: 560; letter-spacing: -0.04em; line-height: 1; pointer-events: none; user-select: none; animation: mascot-drift 5.5s ease-in-out infinite; }
+  .hero-mascot__mark--code { top: 36%; left: 0.2rem; animation-duration: 5s; rotate: -8deg; }
+  .hero-mascot__mark--braces { top: 46%; right: 0.15rem; font-size: 0.85rem; animation-duration: 6.5s; animation-delay: -1.6s; rotate: 7deg; }
+  .hero-mascot__mark--dash { top: 8%; right: 4%; width: 1.05rem; height: 0.16rem; border-radius: 1rem; background: var(--orange); animation-duration: 4.2s; animation-delay: -0.8s; rotate: -32deg; }
+  .hero-mascot__mark--dash-b { top: 15%; right: 0.2rem; width: 0.7rem; animation-duration: 7s; animation-delay: -2.2s; rotate: -18deg; }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero-story { grid-area: story; margin-top: clamp(2rem, 4vw, 3rem); }
+  .hero-bio { max-width: 42rem; color: var(--muted); font-size: clamp(1.02rem, 1.15vw, 1.08rem); line-height: 1.75; }
+  .hero-bio p { margin: 0 0 1.1rem; }
+  .hero-bio p:last-child { margin-bottom: 0; }
+  .hero-story a { color: var(--ink); font-weight: 750; text-decoration: underline; text-decoration-color: var(--orange); text-underline-offset: 0.18em; }
+  .hero-story a:hover { color: var(--orange-dark); }
+  .hero-examples { margin: 0 0 1.1rem; padding: 0; list-style: none; }
+  .hero-examples li { margin: 0 0 1.1rem; }
+  .hero-examples li:last-child { margin-bottom: 0; }
+  .hero-examples strong { color: var(--ink); font-weight: 750; }
 
   .philosophy { overflow: hidden; padding-block: clamp(6rem, 12vw, 12rem); }
   .philosophy-grid { position: relative; }
@@ -147,28 +127,31 @@ import { expertise } from '../data/site';
   .expertise-item i { color: var(--stone); font-style: normal; }
 
   @media (max-width: 1100px) {
-    .hero { grid-template-columns: 1fr; padding-top: 5rem; }
-    .hero-copy { max-width: 64rem; }
-    .hero-workbench { width: min(80%, 42rem); margin: 2rem 0 3rem auto; aspect-ratio: 1.05; }
     .expertise-heading { grid-template-columns: 1fr; }
   }
 
+  @keyframes mascot-arrive { from { opacity: 0; transform: translateY(1.2rem); } to { opacity: 1; transform: none; } }
+  @keyframes mascot-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes mascot-shadow { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(0.82, 0.72); opacity: 0.28; } }
+  @keyframes mascot-drift { 0%, 100% { translate: 0 0; opacity: 0.45; } 50% { translate: 0 var(--drift); opacity: 1; } }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; grid-template-areas: "title" "story" "mascot"; }
+    .hero h1 { max-width: none; }
+    .hero-mascot { --drift: -0.28rem; width: 11.5rem; margin: 1.5rem auto 0; justify-self: center; align-self: center; }
+    .hero-mascot__mark { font-size: 0.72rem; }
+    .hero-mascot__mark--code { left: 0.15rem; }
+    .hero-mascot__mark--braces { right: 0.15rem; font-size: 0.68rem; }
+    .hero-mascot__mark--dash { right: 0.35rem; width: 0.7rem; }
+    .hero-mascot__mark--dash-b { right: 0.1rem; top: 18%; width: 0.48rem; }
+    .hero-story { margin-top: 1.5rem; }
+  }
+
   @media (max-width: 760px) {
-    .hero { display: block; min-height: auto; }
-    h1 { font-size: clamp(3.8rem, 18vw, 6.5rem); line-height: 0.84; }
-    .hero-line--indent { margin-left: 0.5rem; white-space: normal; }
-    .hero-bottom { grid-template-columns: 1fr; }
-    .hero-actions { align-items: stretch; }
-    .hero-actions .button { flex: 1; }
-    .hero-workbench { width: calc(100% - 0.75rem); margin-top: 4rem; aspect-ratio: 0.85; }
     .statement p:last-child { margin-top: 1rem; margin-left: 0; }
     .philosophy-copy { margin-left: 0; }
     .expertise-index { grid-template-columns: 1fr; }
     .expertise-item:nth-child(odd) { border-right: 0; }
   }
 
-  @media (max-width: 460px) {
-    .hero-actions { flex-direction: column; }
-    .hero-workbench { min-height: 31rem; }
-  }
 </style>
